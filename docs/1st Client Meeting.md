@@ -2,7 +2,7 @@
 # Client meeting
 
 * The Client outlines some history about Beaurepaire and it's significance in britain. In a nutshell it was a medieval manor house that was built to defend against the Scottish. It was subject to vandalism throughout the ages (including nowadays).
-####Project 1 related conversation.
+#### Project 1 related conversation.
 * The Client imagines walking around with the "app" on your phone and it tells you where you are in the house, and information about that location. This seemed to be the main part of Project 1 - it's effectively a replacement service instead of physical infrastructure (which would get vandalized).
   - An option could be to include QR codes but this was not something she wanted if possible.
   - Instead of GPS it could simply be a map from above where the user can click on the room they're in to learn information about it.
@@ -15,7 +15,7 @@
    - (Could be pretty easy to do this with the "GPS room system" as long as we keep this in mind during development - extra maintainable)
 * The client has various bits of random data that they would like to include if possible. This includes geophysical data and other archeological survey data. She implied they don't yet have all this data so we need to keep this in mind during development (extra maintainable).
 
-####Project 2 related conversation.
+#### Project 2 related conversation.
 
 * There is a church nearby that will be their "Base of operations" for this location. This doesn't mean much, simply that they could direct people to Beaurepaire from here (or potentially our "app" too).
   - This is where the 3D models are useful, they could house the 3D printed models here to show people/volunteers what it looks (used to look) like.
@@ -26,7 +26,7 @@
     - we need to ask what format the data is in (or preferably the actual data) to work out if we can use it (should ask soon before we commit to a spec).
 
 ---
-##Extra notes/Details
+## Extra notes/Details
 * The site is only about a 40 minute walk away from durham apparently.
 * Durham Uni were the ones that did the drone survey
 * Their main demographic is young people to mid 30's.
