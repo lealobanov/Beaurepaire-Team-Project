@@ -69,6 +69,6 @@
 
 ### Future Meetings
 * Thursday's are good
-* Will normally be the same client who we meet in person
+* Will normally be Rebecca who we meet in person
 * Number: 07895 216171
 * Email: boowhoimboo@gmail.com (confirmed the spelling in latest email)
