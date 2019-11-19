@@ -12,6 +12,7 @@ var currentLong = 0;
 
 var polls = 0;
 var zoomLevel = 20;
+var get_interval = 100;
 
 var cameraCoords = { lat: 0, lng: 0 };
 var personCoords = { lat: 0, lng: 0 };
@@ -65,9 +66,9 @@ window.addEventListener('resize', () => map.getViewPort().resize());
 UpdateCameraPosition();
 
 
-setInterval(
+timer = setInterval(
       () => UpdateUserPosition(),
-      50
+      get_interval
     );
 
 
@@ -110,7 +111,7 @@ async function UpdateUserPosition(){
       personCoords = {lat: latitude, lng: longitude}
       document.getElementById('xPos').innerHTML = "Lat: " + personCoords.lat;
       document.getElementById('yPos').innerHTML = "long: " + personCoords.lng;
-      document.getElementById('tests').innerHTML = "location updates: " + polls;
+      document.getElementById('tests').innerHTML = "location updates: " + polls + " &nbsp&nbsp&nbspinterval: " + get_interval;
       marker.setGeometry(personCoords);
       //marker2.setGeometry(personCoords);
 
@@ -121,6 +122,8 @@ async function UpdateUserPosition(){
       //ctx.scale(8, 8);
       //ctx.strokeRect(5, 5, 25, 15);
 }
+
+
 
 function getCurrentPosition(options = {}) {
       return new Promise((resolve, reject) => {
@@ -153,7 +156,21 @@ function ZoomOut() {
       map.setZoom(zoomLevel);
       
 }
-
+function UpdateInterval(){
+      var newInterval = document.getElementById("intervalInput").value;
+      if ($.isNumeric(newInterval)){
+            get_interval = newInterval;
+            clearInterval(timer);
+            timer = setInterval(
+                  () => UpdateUserPosition(),
+                  get_interval
+                );
+      }
+      else{
+            window.alert("Not a number, ignoring");
+      }
+      
+}
 
 
 //update();
