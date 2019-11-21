@@ -49,20 +49,22 @@
     </div>
   </nav>
 
-  <!-- Masthead -->
+  <!-- Above the fold -->
 
     <div class="container mw-100" style="background-color: #f8f9fa; height:380px;" >
       <div class="row align-items-center justify-content-center text-center">
         <div class="col-lg-8 align-self-baseline">
           <p class="h-100 text-white-75 font-weight-light mb-5" style="padding-top: 80px; padding-bottom:20px; color:rgb(46, 46, 46); font-family: Helvetica Neue; font-size:19px;">Welcome to the administrator backend. Here, you can update existing content, add new data entities, and manage customer donations. Any changes saved will be reflected on the user interface.</p>
           <a class="btn btn-primary btn-xl js-scroll-trigger" style="background-color:#387C44; width: 290px;" href="#currentrecords">Manage Current Records</a>
+          <!-- Prompts a popup which contains a form to initialize a new JSON object, creating a new record -->
           <a class="btn btn-primary btn-xl js-scroll-trigger" style="background-color:#387C44; margin-left:10px; width: 290px;" href="#newrecord">Add a New Entity</a>
         </div>
       </div>
     </div>
   
 
-  <!-- About Section -->
+  <!-- List of existing records; in actual version will dynamically generate the list from JSON objects -->
+  <!-- Option to edit each record; prompts a popup; option to delete the record -->
   <section class="page-section" id="currentrecords">
     <div class="container">
       <h2 class="text-center">Your Existing Records</h2>
