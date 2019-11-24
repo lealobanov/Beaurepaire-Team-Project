@@ -1,0 +1,16 @@
+.picturesrow {
+  display: flex;
+}
+
+.picturescolumn {
+  flex: 33.33%;
+}
+
+.pic {
+  filter: brightness(40%);
+  transition: 0.5s;
+}
+
+.pic:hover {
+  filter: brightness(100%);
+}
