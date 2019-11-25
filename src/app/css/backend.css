@@ -108,12 +108,12 @@ margin-left: 4px;
     padding-bottom: 2em;
     padding-left: 2em;
     background: rgba(255, 255, 255, 0.76);
-    height: 15%
+    height: 150px
 }
 
 .header img {
     float: left;
-    width: 6%;
+    width: 100px;
     height: 100%;
   }
 
