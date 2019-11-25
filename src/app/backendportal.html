@@ -42,36 +42,173 @@
           </li>
           <li class="nav-item">
               <!--Redirect to main site-->
-            <a class="nav-link js-scroll-trigger" style="color:rgb(46, 46, 46);" href="#">Logout</a>
+            <a class="nav-link js-scroll-trigger" style="color:rgb(46, 46, 46);" href="index.html">Logout</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Above the fold -->
+  <!-- Masthead -->
 
     <div class="container mw-100" style="background-color: #f8f9fa; height:380px;" >
       <div class="row align-items-center justify-content-center text-center">
-        <div class="col-lg-8 align-self-baseline">
-          <p class="h-100 text-white-75 font-weight-light mb-5" style="padding-top: 80px; padding-bottom:20px; color:rgb(46, 46, 46); font-family: Helvetica Neue; font-size:19px;">Welcome to the administrator backend. Here, you can update existing content, add new data entities, and manage customer donations. Any changes saved will be reflected on the user interface.</p>
+        <div class="col-lg-12 align-self-baseline">
+          <p class="h-100 text-white-75 font-weight-light mb-5" style="padding-top: 80px; padding-bottom:20px; padding-left: 150px; padding-right: 150px;color:rgb(46, 46, 46); font-family: Helvetica Neue; font-size:19px;">Welcome to the administrator backend. Here, you can update existing content, add new data entities, and manage customer donations. Any changes saved will be reflected on the user interface.</p>
           <a class="btn btn-primary btn-xl js-scroll-trigger" style="background-color:#387C44; width: 290px;" href="#currentrecords">Manage Current Records</a>
-          <!-- Prompts a popup which contains a form to initialize a new JSON object, creating a new record -->
-          <a class="btn btn-primary btn-xl js-scroll-trigger" style="background-color:#387C44; margin-left:10px; width: 290px;" href="#newrecord">Add a New Entity</a>
+          <a class="btn btn-primary btn-xl js-scroll-trigger" style="background-color:#387C44; margin-left:10px; width: 290px; color:#ffffff;"  data-toggle="modal" data-target="#newrecord">Create a New Record</a>
+          <a class="btn btn-primary btn-xl js-scroll-trigger" style="background-color:#387C44; margin-left:10px; width: 290px; color:#ffffff;"  data-toggle="modal" data-target="#newentity">Add a New Entity</a>
         </div>
       </div>
     </div>
   
 
-  <!-- List of existing records; in actual version will dynamically generate the list from JSON objects -->
-  <!-- Option to edit each record; prompts a popup; option to delete the record -->
+  <!-- About Section -->
   <section class="page-section" id="currentrecords">
     <div class="container">
       <h2 class="text-center">Your Existing Records</h2>
       <div class="row">
-      </div>
+          <div class="col-sm">
+         <h5 style="font-size: 20px; padding-top:50px; padding-left: 60px; font-family: Helvetica Neue; color:rgb(46, 46, 46);"><i>Beaurepaire Manor</i></h5>
+          
+            <ul style="font-size: 18px; padding-top:10px; padding-left: 80px; font-family: Helvetica Neue; color:rgb(46, 46, 46); " id="beaurepaire-manor">
+                    <li><a style="color:rgb(46, 46, 46); " data-target="#content" data-toggle="modal" href="#content">Room 1</a></li>
+                    <li><a style="color:rgb(46, 46, 46); " href="#">Room 2</a></li>
+                    <li><a style="color:rgb(46, 46, 46); " href="#">Room 3</a></li>
+                    <li><a style="color:rgb(46, 46, 46); " href="#">Room 4</a></li>
+                  </ul>
+            </div>
+        </div>
+
+        <div class="row">
+                <div class="col-sm">
+               <h5 style="font-size: 20px; padding-top:30px; padding-left: 60px; font-family: Helvetica Neue; color:rgb(46, 46, 46);"><i>Sample Location 2</i></h5>
+                
+                  <ul style="font-size: 18px; padding-top:10px; padding-left: 80px; font-family: Helvetica Neue; color:rgb(46, 46, 46); padding-bottom: 60px; " id="sample-entity-2">
+                          <li><a style="color:rgb(46, 46, 46); " href="#">Room 1</a></li>
+                          <li><a style="color:rgb(46, 46, 46); " href="#">Room 2</a></li>
+                          <li><a style="color:rgb(46, 46, 46); " href="#">Room 3</a></li>
+                          <li><a style="color:rgb(46, 46, 46); " href="#">Room 4</a></li>
+                        </ul>
+                  </div>
+              </div>
     </div>
-  </section>
+
+  <!-- New Entity Modal-->
+<div class="modal fade" id="newentity" tabindex="-1" role="dialog"  aria-hidden="true">
+		<div class="modal-dialog modal-lg" style="width:900px;">
+			<div class="modal-content">
+
+				<!-- Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Add a New Location Entity</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Body -->
+				<div class="modal-body">
+            <p style="font-size:16px; margin-top:15px; font-family: Helvetica Neue;">Add a new location entity to the web application.</p>
+					<form id="form_create_post" style="font-family: Helvetica Neue;" action="/:8090">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Entity Name" id="post_title" required>
+						</div>
+						<div class="form-group">
+								<input type="date" class="form-control" placeholder="Entity Location" id="location" required>	
+							</div>
+						<div class="form-group">
+								<textarea class="form-control" rows="5" placeholder="Enter post content..." id="post_content" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <p><i>Upload Relevant Media: </i></p>
+                                    <input type="file" name="pic" accept="image/*">
+                                </div>
+					
+						<!--alert if failed login-->
+						<button style="background-color:#387C44; border-color:#387C44;" type="submit" id="submit" class="btn btn-info">Create Entity</button>
+					</form>
+				</div>
+
+				<!-- Footer -->
+				<div class="modal-footer">
+				</div>
+			</div>
+		</div>
+  </div>
+
+  <!-- New Record Modal-->
+<div class="modal fade" id="newrecord" tabindex="-1" role="dialog"  aria-hidden="true">
+		<div class="modal-dialog modal-lg" style="width:900px;">
+			<div class="modal-content">
+
+				<!-- Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Create a New Record</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Body -->
+				<div class="modal-body">
+            <p style="font-size:16px; margin-top:15px; font-family: Helvetica Neue;">Create a new record in an existing location entity.</p>
+                    <form id="form_create_post" style="font-family: Helvetica Neue;" action="/:8090">
+                        <div class="form-group">
+                                <p style="font-size: 16px;"><i>Select the appropriate parent entity:</i> </p>
+                                <select name="entities">
+                                        <option value="beaurepaire">Beaurepaire Manor</option>
+                                        <option value="samplelocation2">Sample Location 2</option>
+                                      </select>
+                            </div>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Record Name" id="post_title" required>
+						</div>
+						<div class="form-group">
+								<input type="date" class="form-control" placeholder="Record Location" id="location" required>	
+							</div>
+						<div class="form-group">
+								<textarea class="form-control" rows="5" placeholder="Enter post content..." id="post_content" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <p><i>Upload Relevant Media:</i> </p>
+                                    <input type="file" name="pic" accept="image/*">
+                                </div>
+					
+						<!--alert if failed login-->
+						<button style="background-color:#387C44; border-color:#387C44;" type="submit" id="submit" class="btn btn-info">Create Record</button>
+					</form>
+				</div>
+
+				<!-- Footer -->
+				<div class="modal-footer">
+				</div>
+			</div>
+		</div>
+  </div>
+
+   <!-- Content Modal-->
+<div class="modal fade" id="content" tabindex="-1" role="dialog"  aria-hidden="true">
+		<div class="modal-dialog modal-lg" style="width:900px;">
+			<div class="modal-content">
+
+				<!-- Header -->
+				<div class="modal-header">
+                    <h4 class="modal-title">Room 1</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Body -->
+				<div class="modal-body">
+            <button style="background-color:#387C44; border-color:#387C44;"  id="edit" class="btn btn-info">Edit Record</button>      
+            <button style="background-color:#387C44; border-color:#387C44;"  id="delete" class="btn btn-info">Delete Record</button>  
+            <p style="font-size:16px; margin-top:15px; font-family: Helvetica Neue;">Record content and media to follow....</p>  
+            <p style="font-size:16px; margin-top:15px; font-family: Helvetica Neue;">Integer accumsan nunc quis lectus maximus, congue cursus dolor porta. Duis ultrices sapien non elit cursus, vitae vestibulum massa fermentum. Aliquam sed ligula viverra, imperdiet dolor ut, ornare lorem. Phasellus erat neque, viverra non ipsum at, mollis porta mi. Vivamus nulla turpis, rutrum non laoreet ut, molestie sed mi. Suspendisse nec pharetra tellus. Nam vitae nibh non nisi rutrum rhoncus. Aliquam ligula nulla, placerat ut lobortis vel, aliquam eu lectus. Nulla eget suscipit eros. Vivamus dignissim ornare vehicula. Nunc eleifend arcu est, vitae fringilla risus sodales ac. Nulla porta vestibulum elementum. Sed non porttitor massa, id ultrices elit. Donec gravida turpis eget laoreet aliquam.</p>  
+				</div>
+
+				<!-- Footer -->
+				<div class="modal-footer">
+				</div>
+			</div>
+		</div>
+  </div>
+
 
 
   <!-- Footer -->
@@ -82,6 +219,10 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
