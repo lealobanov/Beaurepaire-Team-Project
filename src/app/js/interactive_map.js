@@ -1,3 +1,4 @@
+//import { Vector3, RGBA_ASTC_10x10_Format } from "./three";
 
 var container = document.getElementsByClassName("renderObject")[0];
 var scene = new THREE.Scene();
@@ -10,20 +11,27 @@ renderer.setSize(container.scrollWidth, container.scrollHeight);
 
 
 var geometry = new THREE.BoxGeometry(1, 1, 1);
-var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+var material = new THREE.MeshPhongMaterial();
 
 var cube = new THREE.Mesh(geometry, material);
+var directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+var light = new THREE.AmbientLight(0x202020);
 
 scene.add(cube);
+scene.add(directionalLight);
+scene.add(light);
 
-camera.position.z = 5;
 
+scene.background = new THREE.Color(0xf0f0f0);
 
 
 
 function start() {
+    camera.position.z = 5;
+    directionalLight.position.set(1, 1, 1);
 
 
+    console.log("Started");
 }
 
 function animate() {
@@ -42,6 +50,7 @@ function animate() {
 if (WEBGL.isWebGLAvailable()) {
     container.appendChild(renderer.domElement);
     start();
+
     animate();
 
 } else {
