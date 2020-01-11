@@ -3,25 +3,17 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
 
-.backimage{
-  background-image: linear-gradient(to bottom, rgba(182, 168, 158, 0.253) 0%, rgba(182, 168, 158, 0.233) 100%), url('../img/HighResDroneImage2.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-
-
-  height:100%;
-
-  font-family: 'Numans', sans-serif;
-}
-
-.container{
-  height: 100%;
+.container {
+  height: 75%;
   align-content: center;
 }
 
-.press{
+.renderObject {
+  height: 75%;
+  align-content: center;
+}
+
+.press {
   background-color: #ddd;
   border: 3px solid #ccc;
   border-radius: 50%;
@@ -32,67 +24,34 @@
 
 }
 
-#one{
-  top:31%;
-  left: 27%;
-}
-#two{
-  top:56%;
-  left: 30%;
-}
-#three{
-  top:70%;
-  left:40%;
-}
-#four{
-  top:45%;
-  left:49%;
-}
-#five{
-  top:30%;
-  left: 69%;
-}
-#six{
-  top:52%;
-  left:65%
-}
-#seven{
-  top: 45%;
-  left:74%;
-}
-#eight{
-  top:62%;
-  left:51%;
+.footer {
+  height: 5%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.76);
 }
 
-.footer{
-    height:5%;
-    width : 100%;
-    background-color:rgba(255, 255, 255, 0.76);
-}
-
-.header{
-    padding-top: 2em;
-    padding-bottom: 2em;
-    padding-left: 2em;
-    background: rgba(255, 255, 255, 0.76);
-    height: 15%
+.header {
+  padding-top: 2em;
+  padding-bottom: 2em;
+  padding-left: 2em;
+  background: rgba(255, 255, 255, 0.76);
+  height: 15%
 }
 
 .header img {
-    float: left;
-    width: 6%;
-    height: 100%;
-  }
+  float: left;
+  width: 6%;
+  height: 100%;
+}
 
 .header h2 {
-    padding-left: 2em;
-    position: relative;
-    left: 10px;
-  }
+  padding-left: 2em;
+  position: relative;
+  left: 10px;
+}
 
-  .header h3 {
-    padding-left: 2em;
-    position: relative;
-    left: 10px;
-  }
+.header h3 {
+  padding-left: 2em;
+  position: relative;
+  left: 10px;
+}
