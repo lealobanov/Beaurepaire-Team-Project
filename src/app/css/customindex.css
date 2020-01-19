@@ -14,3 +14,13 @@
 .pic:hover {
   filter: brightness(100%);
 }
+
+@media screen and (min-width:411px), screen and (min-height:812px) {
+  .mobile {display: none;}
+  .desktop {display: block;}
+}
+
+@media screen and (max-width:411px), screen and (max-height:812px) {
+  .mobile {display: block;}
+  .desktop {display: none;;}
+}
