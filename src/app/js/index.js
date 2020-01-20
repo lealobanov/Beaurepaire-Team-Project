@@ -1,8 +1,10 @@
 function getLocation() {
-  if (isMobile && navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else if (!navigator.geolocation) {
-    alert("Geolocation is not supported by this browser.");
+  if (isMobile()) {
+    try {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } catch (err) {
+      alert("Error: " + err.message + ". Unable to obtain location information");
+    }
   }
 }
 
