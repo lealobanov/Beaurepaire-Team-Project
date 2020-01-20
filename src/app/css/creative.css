@@ -9520,7 +9520,7 @@ a.text-dark:hover, a.text-dark:focus {
     min-width: 992px !important;
   }
   .navbar {
-    display: none !important;
+    display: none;
   }
   .badge {
     border: 1px solid #000;
