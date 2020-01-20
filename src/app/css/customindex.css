@@ -15,12 +15,13 @@
   filter: brightness(100%);
 }
 
-@media screen and (min-width:411px), screen and (min-height:812px) {
-  .mobile {display: none;}
-  .desktop {display: block;}
+@media screen and (min-width:600px) {
+  .mobile {display: none !important;}
+  .desktop {display: block !important;}
 }
 
-@media screen and (max-width:411px), screen and (max-height:812px) {
-  .mobile {display: block;}
-  .desktop {display: none;;}
+@media screen and (max-width:600px) {
+  .mobile {display: block !important;}
+  .desktop {display: none !important;}
 }
+/* , screen and (min-height:1023px) */
