@@ -24,9 +24,14 @@
   display: none;
 }
 
-@media screen and (min-width:600px) {
+@media screen and (min-width:600px), screen and (min-height:600px) {
   .mobile {display: none !important;}
   .desktop {display: block !important;}
+}
+
+@media screen and (max-height:600px) {
+  .mobile {display: block !important;}
+  .desktop {display: none !important;}
 }
 
 @media screen and (max-width:600px) {
