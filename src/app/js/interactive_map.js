@@ -17,46 +17,25 @@ renderer.setSize(container.scrollWidth, container.scrollHeight);
 //## MATERIALS
 var material_grey = new THREE.MeshPhongMaterial({ color: 0x606060 });
 var material_light = new THREE.MeshPhongMaterial({ color: 0xd0d0d0 });
-var material_selectable =  new THREE.MeshPhongMaterial({ color: 0xd06050 });
+var material_red = new THREE.MeshPhongMaterial({ color: 0xee4040 });
+var material_selectable = new THREE.MeshPhongMaterial({ color: 0xd06050 });
 material_selectable.opacity = 0.2;
 material_selectable.transparent = true;
-var material_dashed_lines = new THREE.LineBasicMaterial({color: 0xd18340});
+material_selectable.name = "selectable";
+var material_dashed_lines = new THREE.LineBasicMaterial({ color: 0xd18340 });
 material_dashed_lines.linewidth = 2;
-//material_dashed_lines.dashSize= 3;
+var selectable_zones = [];
 
-
-//## GEOMETRY AND MESHES
-
-
-class Selectable_Zone{
-    mesh;
-    line;
-    constructor(ID, position, size){
-        this.ID = ID;
-        this.position = position;
-        this.size = size;
-        this.geometry = new THREE.CubeGeometry(this.size.x, this.size.y, this.size.z);
-        this.mesh = new THREE.Mesh(this.geometry, material_selectable);
-        this.edges = new THREE.EdgesGeometry(this.geometry);
-        this.line = new THREE.LineSegments(this.edges, material_dashed_lines);
-        this.mesh.position.set(position.x, position.y, position.z);
-        this.line.position.set(position.x, position.y, position.z);
-    }
-
-}
-
-let selectable_zones = []
-
-function refresh_zones(){
+function refresh_zones() {
     selectable_zones = []
-    standard_size = new THREE.Vector3(2,1.3,3);
+    standard_size = new THREE.Vector3(2, 1.3, 3);
     for (i = 0; i < 3; i++) {
-        new_pos = new THREE.Vector3(i*3 - 3.4, 0.5, 0);
-        
+        new_pos = new THREE.Vector3(i * 3 - 3.4, 0.5, 0);
+
         new_zone = new Selectable_Zone(i, new_pos, standard_size);
         scene.add(new_zone.mesh);
         scene.add(new_zone.line);
-      }
+    }
 }
 
 refresh_zones();
@@ -71,8 +50,8 @@ var cone_geometry2 = new THREE.ConeGeometry(1, 1, 15);
 var cone_mesh2 = new THREE.Mesh(cone_geometry2, material_light);
 cone_mesh2.castShadow = true;
 
-var sphere_geometry1 = new THREE.SphereGeometry(1, 15, 15);
-var sphere_mesh1 = new THREE.Mesh(sphere_geometry1, material_light);
+var sphere_geometry1 = new THREE.SphereGeometry(0.1, 15, 15);
+var sphere_mesh1 = new THREE.Mesh(sphere_geometry1, material_red);
 sphere_mesh1.castShadow = true;
 
 var cube_geometry1 = new THREE.CubeGeometry(5, 1, 1);
@@ -86,7 +65,6 @@ cube_mesh2.castShadow = true;
 var floor_geometry = new THREE.PlaneGeometry(10, 10);
 var floor_mesh = new THREE.Mesh(floor_geometry, material_grey);
 floor_mesh.receiveShadow = true;
-
 
 //## LIGHTS
 
@@ -118,8 +96,10 @@ scene.add(cube_mesh2);
 scene.add(floor_mesh);
 scene.add(directionalLight);
 scene.add(light);
-scene.fog = new THREE.FogExp2( 0xfefefe);//, 4, 40 );
+scene.fog = new THREE.FogExp2(0xfefefe);//, 4, 40 );
 scene.fog.density = 0.03;
+var raycaster = new THREE.Raycaster();
+var mouse_pos = new THREE.Vector2(0, 0);
 
 if (WEBGL.isWebGLAvailable()) {
     container.appendChild(renderer.domElement);
@@ -133,11 +113,26 @@ if (WEBGL.isWebGLAvailable()) {
     container.appendChild(warning);
 
 }
+renderer.domElement.addEventListener('touchend', onMouseMove, false);
 window.addEventListener('resize', onWindowResize, false);
+//document.domElement.addEventListener("click", myFunction);
+function myFunction() {
+    alert("Hello World!");
+}
 function onWindowResize() {
     camera.aspect = container.scrollWidth / container.scrollHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(container.scrollWidth, container.scrollHeight);
+    console.log("resized");
+}
+function onMouseMove(event) {
+    // calculate mouse position in normalized device coordinates
+    // (-1 to +1) for both components
+
+    mouse_pos.x = ((event.changedTouches[0].clientX - renderer.domElement.offsetLeft) / renderer.domElement.width) * 2 - 1;
+    mouse_pos.y = - ((event.changedTouches[0].clientY - renderer.domElement.offsetTop) / renderer.domElement.height) * 2 + 1;
+    //console.log(event.changedTouches[0].clientY, renderer.domElement.height);
+    raycast(mouse_pos);
 }
 
 
@@ -161,11 +156,35 @@ function start() {
     console.log("Started");
 }
 
+function raycast(pos) {
+    raycaster.setFromCamera(pos, camera);
+    var intersects = raycaster.intersectObjects(scene.children);
+    var closest_point;
+    var closest_dist = 100000;
+    var closest_obj;
+    for (var i = 0; i < intersects.length; i++) {
+
+        //intersects[i].object.material.color.set(0xff0000);
+        var dist = intersects[i].point.distanceTo(camera.position);
+        if (dist < closest_dist && intersects[i].object.type != "LineSegments") {
+            closest_dist = dist;
+            closest_point = intersects[i].point;
+            closest_obj = intersects[i];
+        }
+    }
+    if (closest_point) {
+        console.log(closest_obj);
+
+        sphere_mesh1.position.set(closest_point.x, closest_point.y, closest_point.z);
+    }
+
+}
+
 function animate() {
 
     //cube.rotation.x += 0.01;
     //cube.rotation.y += 0.01;
-
+    //console.log(mouse_pos);
 
 
     requestAnimationFrame(animate);
