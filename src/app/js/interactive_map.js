@@ -22,6 +22,15 @@ var material_selectable = new THREE.MeshPhongMaterial({ color: 0xd06050 });
 material_selectable.opacity = 0.2;
 material_selectable.transparent = true;
 material_selectable.name = "selectable";
+var material_hovering = new THREE.MeshPhongMaterial({ color: 0x9090e0 });
+material_hovering.opacity = 0.6;
+material_hovering.transparent = true;
+material_hovering.name = "selectable";
+var material_selected = new THREE.MeshPhongMaterial({ color: 0x3030f0 });
+material_selected.opacity = 0.4;
+material_selected.transparent = true;
+material_selected.name = "selectable";
+
 var material_dashed_lines = new THREE.LineBasicMaterial({ color: 0xd18340 });
 material_dashed_lines.linewidth = 2;
 var selectable_zones = [];
@@ -86,7 +95,6 @@ controls.minDistance = 1;
 controls.maxDistance = 100;
 controls.maxPolarAngle = Math.PI / 2.1;
 
-
 //## SCENE INITIALISATION
 scene.add(cone_mesh1);
 scene.add(cone_mesh2);
@@ -113,7 +121,8 @@ if (WEBGL.isWebGLAvailable()) {
     container.appendChild(warning);
 
 }
-renderer.domElement.addEventListener('touchend', onMouseMove, false);
+renderer.domElement.addEventListener('touchstart', onTouchStart, false);
+renderer.domElement.addEventListener('touchend', onTouchEnd, false);
 window.addEventListener('resize', onWindowResize, false);
 //document.domElement.addEventListener("click", myFunction);
 function myFunction() {
@@ -125,17 +134,87 @@ function onWindowResize() {
     renderer.setSize(container.scrollWidth, container.scrollHeight);
     console.log("resized");
 }
-function onMouseMove(event) {
+
+var hovering_zone = undefined;
+var selected_zone = undefined;
+
+function onTouchStart(event) {
     // calculate mouse position in normalized device coordinates
     // (-1 to +1) for both components
 
     mouse_pos.x = ((event.changedTouches[0].clientX - renderer.domElement.offsetLeft) / renderer.domElement.width) * 2 - 1;
     mouse_pos.y = - ((event.changedTouches[0].clientY - renderer.domElement.offsetTop) / renderer.domElement.height) * 2 + 1;
     //console.log(event.changedTouches[0].clientY, renderer.domElement.height);
-    raycast(mouse_pos);
+
+    hovering_zone = raycast(mouse_pos);
+    enableHovering_Zone(hovering_zone);
 }
+function onTouchEnd(event) {
+    // calculate mouse position in normalized device coordinates
+    // (-1 to +1) for both components
 
+    mouse_pos.x = ((event.changedTouches[0].clientX - renderer.domElement.offsetLeft) / renderer.domElement.width) * 2 - 1;
+    mouse_pos.y = - ((event.changedTouches[0].clientY - renderer.domElement.offsetTop) / renderer.domElement.height) * 2 + 1;
+    //console.log(event.changedTouches[0].clientY, renderer.domElement.height);
+    target = raycast(mouse_pos);
+    successful_select = false;
+    //console.log(target, hovering_zone);
+    if (target != undefined && hovering_zone != undefined) {
+        if (target.object.uuid == hovering_zone.object.uuid) {
+            successful_select = true;
+        }
+    }
 
+    disableHovering_Zone();
+    if (successful_select) {
+        var deselect = false;
+        if (selected_zone != null) {
+            if (selected_zone.object.uuid == target.object.uuid) {
+                deselect = true;
+            }
+        }
+        deselect_zone();
+        if (deselect == false) {
+            select_zone(target);
+        }
+    }
+}
+function disableHovering_Zone() {
+    if (hovering_zone != undefined) {
+        var skip = false;
+        if (selected_zone != undefined) {
+            if (selected_zone.object.uuid == hovering_zone.object.uuid) {
+                hovering_zone.object.material = material_selected;
+                skip = true;
+            }
+        }
+        if (skip == false) {
+            hovering_zone.object.material = material_selectable;
+        }
+
+        hovering_zone = undefined;
+    }
+}
+function enableHovering_Zone(zone) {
+    if (hovering_zone != undefined) {
+        disableHovering_Zone();
+    }
+    if (zone != undefined) {
+        hovering_zone = zone;
+        hovering_zone.object.material = material_hovering;
+    }
+}
+function select_zone(zone) {
+    selected_zone = zone;
+    selected_zone.object.material = material_selected;
+    console.log(selected_zone);
+}
+function deselect_zone() {
+    if (selected_zone != undefined) {
+        selected_zone.object.material = material_selectable;
+        selected_zone = undefined;
+    }
+}
 
 function start() {
     scene.background = new THREE.Color(0xf0f0f0);
@@ -161,22 +240,27 @@ function raycast(pos) {
     var intersects = raycaster.intersectObjects(scene.children);
     var closest_point;
     var closest_dist = 100000;
-    var closest_obj;
+    var closest_obj = undefined;
     for (var i = 0; i < intersects.length; i++) {
 
         //intersects[i].object.material.color.set(0xff0000);
         var dist = intersects[i].point.distanceTo(camera.position);
-        if (dist < closest_dist && intersects[i].object.type != "LineSegments") {
+        if (dist < closest_dist && intersects[i].object.type == "Mesh") {
             closest_dist = dist;
             closest_point = intersects[i].point;
             closest_obj = intersects[i];
         }
     }
     if (closest_point) {
-        console.log(closest_obj);
+        //console.log(closest_obj);
+        if (closest_obj.object.material.name != "selectable") {
+            closest_obj = undefined;
+            //sphere_mesh1.position.set(closest_point.x, closest_point.y, closest_point.z);
+        }
 
-        sphere_mesh1.position.set(closest_point.x, closest_point.y, closest_point.z);
+
     }
+    return closest_obj;
 
 }
 
