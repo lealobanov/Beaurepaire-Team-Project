@@ -1,6 +1,3 @@
-//var THREE = require('three');
-//import { OrbitControls } from '../js/OrbitControls.js';
-
 
 var container = document.getElementsByClassName("renderObject")[0];
 var scene = new THREE.Scene();
@@ -34,6 +31,9 @@ material_selected.name = "selectable";
 var material_dashed_lines = new THREE.LineBasicMaterial({ color: 0xd18340 });
 material_dashed_lines.linewidth = 2;
 var selectable_zones = [];
+function zone_data(zoneID) {
+    return selectable_zones[zoneID].data;
+}
 
 function refresh_zones() {
 
@@ -48,7 +48,6 @@ function refresh_zones() {
         scene.add(new_zone.line);
         selectable_zones.push(new_zone);
     }
-    console.log(selectable_zones);
 }
 function clear_zones() {
     if (selectable_zones.length > 0) {
@@ -185,9 +184,12 @@ function onTouchEnd(event) {
                 deselect = true;
             }
         }
-        deselect_zone();
+        Deselect_Zone();
         if (deselect == false) {
             select_zone(target);
+        }
+        else {
+            Zone_Deselected();
         }
     }
 }
@@ -219,12 +221,13 @@ function enableHovering_Zone(zone) {
 function select_zone(zone) {
     selected_zone = zone;
     selected_zone.object.material = material_selected;
-    if (selected_zone.object.name == 2) {
-        deselect_zone();
-        clear_zones();
-    }
+    Zone_Clicked(selected_zone.object.userData.ID);
 }
-function deselect_zone() {
+
+/**
+ * Deselects whatever zone is currently selected.
+ */
+function Deselect_Zone() {
     if (selected_zone != undefined) {
         selected_zone.object.material = material_selectable;
         selected_zone = undefined;
