@@ -36,7 +36,9 @@ material_dashed_lines.linewidth = 2;
 var selectable_zones = [];
 
 function refresh_zones() {
-    selectable_zones = []
+
+    clear_zones();
+
     standard_size = new THREE.Vector3(2, 1.3, 3);
     for (i = 0; i < 3; i++) {
         new_pos = new THREE.Vector3(i * 3 - 3.4, 0.5, 0);
@@ -44,9 +46,19 @@ function refresh_zones() {
         new_zone = new Selectable_Zone(i, new_pos, standard_size);
         scene.add(new_zone.mesh);
         scene.add(new_zone.line);
+        selectable_zones.push(new_zone);
     }
+    console.log(selectable_zones);
 }
-
+function clear_zones() {
+    if (selectable_zones.length > 0) {
+        for (zoneID in selectable_zones) {
+            scene.remove(selectable_zones[zoneID].mesh);
+            scene.remove(selectable_zones[zoneID].line);
+        }
+    }
+    selectable_zones = []
+}
 refresh_zones();
 
 
@@ -207,7 +219,10 @@ function enableHovering_Zone(zone) {
 function select_zone(zone) {
     selected_zone = zone;
     selected_zone.object.material = material_selected;
-    console.log(selected_zone);
+    if (selected_zone.object.name == 2) {
+        deselect_zone();
+        clear_zones();
+    }
 }
 function deselect_zone() {
     if (selected_zone != undefined) {
