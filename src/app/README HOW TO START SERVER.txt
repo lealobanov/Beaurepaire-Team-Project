@@ -1,5 +1,6 @@
 #### Setup by doing in terminal (requires node package manager to be installed):
 npm install
+npm install --global gulp-cli
 gulp
 
 #### Start server/browser by doing:
