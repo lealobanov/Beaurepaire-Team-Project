@@ -24,9 +24,6 @@
   <link href="css/creative.min.css" rel="stylesheet">
   <link href="css/customindex.css" rel="stylesheet">
 
-  <!-- onload and main scripts -->
-  <script src="js/index.js"></script>
-
   </script>
 
 </head>
@@ -178,15 +175,20 @@
 
   <!-- Pictures section -->
   <section class="desktop page-section" id="about" style="padding: 0px">
+    <div id="theModal" class="galleryModal">
+      <span class="close">&times;
+      </span>
+      <img class="galleryModal-content" id="modalImg01">
+    </div>
     <div class="picturesrow">
       <div class="picturescolumn">
-        <img class="pic" src="img/pictureboard/img1.jpg" alt="hi" style="width:100%">
+        <img class="pic" id="img01" onclick="createModal()" src="img/pictureboard/img1.jpg" alt="hi" style="width:100%">
       </div>
       <div class="picturescolumn">
-        <img class="pic" src="img/pictureboard/img2.jpg" alt="hi" style="width:100%">
+        <img class="pic" id="img02" onclick="createModal()" src="img/pictureboard/img2.jpg" alt="hi" style="width:100%">
       </div>
       <div class="picturescolumn">
-        <img class="pic" src="img/pictureboard/img3.jpg" alt="hi" style="width:100%">
+        <img class="pic" id="img03" onclick="createModal()" src="img/pictureboard/img3.jpg" alt="hi" style="width:100%">
       </div>
     </div>
   </section>
@@ -208,6 +210,9 @@
 
   <!-- Custom scripts for this template -->
   <script src="js/creative.min.js"></script>
+
+  <!-- onload and main scripts -->
+  <script src="js/index.js"></script>
 
 </body>
 
