@@ -34,7 +34,13 @@
         "gulp-update": "0.0.2",
         "jquery": "3.4.1",
         "jquery.easing": "^1.4.1",
-        "magnific-popup": "^1.1.0"
+        "magnific-popup": "^1.1.0",
+        "body-parser": "^1.18.3",
+        "express": "^4.16.4",
+        "express-handlebars": "^3.0.0",
+        "mongoose": "^5.8.9"
+  }
+}
     },
     "devDependencies": {
         "browser-sync": "2.26.7",
