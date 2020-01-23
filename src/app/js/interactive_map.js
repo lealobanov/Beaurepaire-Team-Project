@@ -253,6 +253,12 @@ function select_zone(zone) {
     selected_zone = zone;
     selected_zone.object.material = material_selected;
     Zone_Clicked(selected_zone.object.userData.ID);
+    // inserted code by Alex
+    // m=Get_Data_For_Zone(selected_zone.object.userData.ID);
+    // console.log(m);
+    k="myModal"
+    Display(k);
+    // end of inserted code by Alex
 }
 
 /**
@@ -328,5 +334,3 @@ function animate() {
 
 
 }
-
-
