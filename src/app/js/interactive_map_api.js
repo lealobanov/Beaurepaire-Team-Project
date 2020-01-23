@@ -2,12 +2,17 @@
 /**
  * Activated when a particular zone is clicked on.
  * Also activated when swapped from one zone to another.
- * @param {number} zone_ID 
+ * @param {number} zone_ID
  */
 function Zone_Clicked(zone_ID) {
 
     console.log("Zone " + zone_ID.toString() + " clicked.");
-
+    // inserted code by Alex
+    // m=Get_Data_For_Zone(selected_zone.object.userData.ID);
+    // console.log(m);
+    k = "myModal"
+    Display(k);
+    // end of inserted code by Alex
 }
 
 /**
@@ -38,6 +43,29 @@ async function Get_Data_For_Zone(zone_ID) {
     return data;
 }
 
+// code inserted by Alex
+async function Display(id_zone) {
+    // Get the modal
+    var modal = document.getElementById(id_zone);
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    modal.style.display = "block";
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+}
+// end of code inserted by Alex
 
 
 /**

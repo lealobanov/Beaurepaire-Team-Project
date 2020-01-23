@@ -253,6 +253,7 @@ function select_zone(zone) {
     selected_zone = zone;
     selected_zone.object.material = material_selected;
     Zone_Clicked(selected_zone.object.userData.ID);
+
 }
 
 /**
@@ -328,5 +329,3 @@ function animate() {
 
 
 }
-
-
