@@ -92,7 +92,7 @@ router.get('/:id', (req, res) => {
     Feature.findById(req.params.id, (err, doc) => {
         if (!err) {
             res.render("features/add-modify", {
-                viewTitle: "Update Features",
+                viewTitle: "Update Feature",
                 feature: doc
             });
         }
