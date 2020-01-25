@@ -449,7 +449,7 @@ function Deselect_Zone() {
 
 function start() {
     scene.background = new THREE.Color(0xf0f0f0);
-    camera.position.set(0, 7, 1); //set(0, 5, 5);
+    camera.position.set(0, 5, 3); //set(0, 5, 5);
     // cone_mesh1.position.set(2, 1, 0);
     // cone_mesh2.position.set(-1, 0.5, 1);
     // sphere_mesh1.position.set(-1, 0.9, -3);
