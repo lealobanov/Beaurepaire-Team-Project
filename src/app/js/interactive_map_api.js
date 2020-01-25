@@ -58,7 +58,7 @@ async function Display(id_zone) {
 
     // append HTML with javascript
     var yo = document.getElementById("insertModal");
-    yo.innerHTML+="Maybe we could append different text all the time to the same template."
+    yo.innerHTML="Maybe we could append different text all the time to the same template."
 
     // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
