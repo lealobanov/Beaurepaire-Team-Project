@@ -10,7 +10,8 @@ function Zone_Clicked(zone_ID) {
     // inserted code by Alex
     // m=Get_Data_For_Zone(selected_zone.object.userData.ID);
     // console.log(m);
-    k = "myModal"
+    // k = "zone"+zone_ID.toString();
+    k="myModal"
     Display(k);
     // end of inserted code by Alex
 }
@@ -48,13 +49,23 @@ async function Display(id_zone) {
     // Get the modal
     var modal = document.getElementById(id_zone);
 
+    var btn = document.getElementById("CloseBtn");
+
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
 
     modal.style.display = "block";
 
+    // append HTML with javascript
+    var yo = document.getElementById("insertModal");
+    yo.innerHTML+="Maybe we could append different text all the time to the same template."
+
     // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
+        modal.style.display = "none";
+    }
+    // When the user clicks on Close button, close the modal
+    btn.onclick = function () {
         modal.style.display = "none";
     }
 
