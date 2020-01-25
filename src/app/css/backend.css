@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
 html,body{
-background-image: linear-gradient(to bottom, rgba(182, 168, 158, 0.253) 0%, rgba(182, 168, 158, 0.233) 100%), url('../img/beaurepaire.png');
+background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../img/beaurepaire.png");
 background-size: cover;
 background-repeat: no-repeat;
 height: 100%;
