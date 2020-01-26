@@ -63,6 +63,7 @@ async function Display(id_zone) {
     // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
         modal.style.display = "none";
+        Deselect_Zone();
     }
     // When the user clicks on Close button, close the modal
     btn.onclick = function () {
@@ -73,6 +74,7 @@ async function Display(id_zone) {
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
+            Deselect_Zone();
         }
     }
 }
