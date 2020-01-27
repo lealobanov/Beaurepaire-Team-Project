@@ -10,8 +10,8 @@ var firebaseConfig = {
   measurementId: "G-VLTKYP402W"
 };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-console.log("initialized firebase");
+//firebase.initializeApp(firebaseConfig);
+
 
 
 // Defining Firebase authentication elements
@@ -27,6 +27,8 @@ btnLogin.addEventListener('click', e => {
   const password = txtPassword.value;
   console.log(password)
   console.log("got click")
+  //Force to client portal w/out auth 
+  window.location = '/features/list';
   firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
