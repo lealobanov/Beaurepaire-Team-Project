@@ -22,7 +22,7 @@ app.listen(3000, () => {
 
 app.use('/features', featureController);
 app.use(express.static('public'));
-app.get('/',function(req,res){
-    res.sendFile(path.join(__dirname+'/public/backendlogin.html'));
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname + '/public/index.html'));
 });
 
