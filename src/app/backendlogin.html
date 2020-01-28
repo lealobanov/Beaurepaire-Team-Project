@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+   <!--Made with love by Mutiullah Samim -->
+   
+	<!--Bootsrap 4 CDN-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <!--Fontawesome CDN-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+	<!--Custom styles-->
+	<link rel="stylesheet" type="text/css" href="./css/backend.css">
+</head>
+
+<body>
+    <div class="header">
+        <img src="img/logo.png" alt="logo"/>
+        <h2>Sandman</h2>
+        <h3>Admin tool for DREAM Heritage CIC</h3>
+      </div>
+<div class="container">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card px-md-3">
+			<div class="card-header">
+				<h3>Sign In</h3>
+			</div>
+			<div class="card-body">
+				<form>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input type="text" class="form-control" placeholder="username" id="username_login">
+						
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" class="form-control" placeholder="password" id="password_login">
+					</div>
+					<div class="form-group">
+						<button type="button" value="Login" id="btnLogin" class="btn float-right login_btn" href="/features/list">Log In</button>
+					</div>
+				</form>
+			</div>
+			</div>
+		</div>
+  </div>
+</div>
+<footer style="background-color:rgba(255, 255, 255, 0.76)" class="py-5">
+    <div class="container">
+	  <div class="small text-center text-muted">Copyright &copy; 2020 - Dream Heritage CIC</div>
+	  <div class="small text-center text-muted"><a href="/index.html">Return to Main Site</a></div>
+    </div>
+  </footer>
+
+   <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+   <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+
+   <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+   <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-analytics.js"></script>
+ 
+   <!-- Add Firebase products that you want to use -->
+   <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-firestore.js"></script>
+   <script type="text/javascript" src="loginauth.js"></script>
+
+</body>
+</html>
