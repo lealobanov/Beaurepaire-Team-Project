@@ -2,6 +2,10 @@
 var container = document.getElementsByClassName("renderObject")[0];
 var scene = new THREE.Scene();
 
+coordinate_data = Get_Coordinate_Data();
+zone_data = Get_All_Zone_Data();
+
+
 //## RENDERER
 
 var renderer = new THREE.WebGLRenderer();

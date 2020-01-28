@@ -60,6 +60,7 @@ async function Display(id_zone) {
     var yo = document.getElementById("insertModal");
     yo.innerHTML="Maybe we could append different text all the time to the same template."
 
+
     // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
         modal.style.display = "none";
@@ -86,11 +87,11 @@ async function Display(id_zone) {
  * To be filled out by Back-End crew.
  */
 async function Get_All_Zone_Data() {
-    let data = {};
+    let main_data = {};
 
     // GET data from backend
 
-    return data;
+    return main_data;
 }
 
 /**
