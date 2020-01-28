@@ -9,6 +9,33 @@ router.get('/', (req, res) => {
     });
 });
 
+// List all of the DB records
+router.get('/retrieverecords/', function(req,res) {
+    Feature.find((err, docs) => {
+        if (!err) {
+            res.send(docs);
+            //console.log(docs);
+        }
+        else {
+            console.log('Error in retrieving records :' + err);
+        }
+    });
+});
+
+// Retrieve an individual record by ID
+router.get('/retrieverecords/:id', function(req,res) {
+    Feature.findById(req.params.id, (err, doc) => {
+        if (!err) {
+            res.send(doc);
+            //console.log(doc);
+        }
+        else {
+            console.log('Error in retrieving record.');
+        }
+    });
+});
+
+
 router.post('/', (req, res) => {
     if (req.body._id == '')
         insertRecord(req, res);
@@ -66,6 +93,22 @@ router.get('/list', (req, res) => {
             res.render("features/list", {
                 list: docs
             });
+            console.log(docs);
+        }
+        else {
+            console.log('Error in retrieving features list :' + err);
+        }
+    });
+});
+
+router.get('/records', (req, res) => {
+    Feature.find((err, docs) => {
+        if (!err) {
+            res.render("/records", {
+                list: docs
+            });
+            console.log(docs);
+            
         }
         else {
             console.log('Error in retrieving features list :' + err);
