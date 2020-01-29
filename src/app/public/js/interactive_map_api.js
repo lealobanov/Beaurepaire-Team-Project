@@ -15,13 +15,15 @@ async function Zone_Clicked(zone_ID) {
     Display(k);
 
 
+    // end of inserted code by Alex
+
     // Get_Data_For_Zone() is an async function, requires "await" to force it to
     // wait until the data is returned, otherwise it will return "null" sometimes.
     var this_modal_data = await Get_Data_For_Zone(zone_ID);
     console.log(this_modal_data);
     // ^ TEMPORARY CONSOLE LOG
 
-    // end of inserted code by Alex
+
 }
 
 /**
@@ -111,7 +113,6 @@ async function GetAllData() {
 //Retrieve only modeling-specific data (feature id, coordinates 1, coordinates 2, rotation)
 async function Get_Modeling_Data() {
     let data = await GetAllData();
-    await new Promise(r => setTimeout(r, 4000));
     modeling_data = [];
     for (var i = 0; i < data.length; i++) {
         _id = data[i]._id;
