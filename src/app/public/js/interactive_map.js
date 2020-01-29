@@ -2,6 +2,7 @@
 var container = document.getElementsByClassName("renderObject")[0];
 var scene = new THREE.Scene();
 
+
 //## RENDERER
 
 var renderer = new THREE.WebGLRenderer();
@@ -37,161 +38,201 @@ material_selected.name = "selectable";
 
 var material_dashed_lines = new THREE.LineBasicMaterial({ color: 0xd18340 });
 material_dashed_lines.linewidth = 2;
+
+// function get_coords_TEMP() {
+
+//     var coords = [
+//         {
+//             "id": 0,
+//             "coord1": {
+//                 "x": 1.2,
+//                 "y": 0,
+//                 "z": -3.2
+//             },
+//             "coord2": {
+//                 "x": 6.8,
+//                 "y": 1.3,
+//                 "z": -1.5
+//             },
+//             "rotation": 0
+//         },
+//         {
+//             "id": 1,
+//             "coord1": {
+//                 "x": -6.8,
+//                 "y": 0,
+//                 "z": -2.8
+//             },
+//             "coord2": {
+//                 "x": -1.1,
+//                 "y": 0.7,
+//                 "z": -1.5
+//             },
+//             "rotation": 0.12
+//         },
+//         {
+//             "id": 2,
+//             "coord1": {
+//                 "x": -0.4,
+//                 "y": 0,
+//                 "z": -3.3
+//             },
+//             "coord2": {
+//                 "x": 0.5,
+//                 "y": 0.8,
+//                 "z": -1.5
+//             },
+//             "rotation": 0
+//         },
+//         {
+//             "id": 3,
+//             "coord1": {
+//                 "x": -0.44,
+//                 "y": 0,
+//                 "z": -0.63
+//             },
+//             "coord2": {
+//                 "x": 0.58,
+//                 "y": 0.6,
+//                 "z": 1.1
+//             },
+//             "rotation": 0
+//         },
+//         {
+//             "id": 4,
+//             "coord1": {
+//                 "x": 5.8,
+//                 "y": -0.1,
+//                 "z": -0.5
+//             },
+//             "coord2": {
+//                 "x": 6.9,
+//                 "y": 0.6,
+//                 "z": 1.3
+//             },
+//             "rotation": 0
+//         },
+//         {
+//             "id": 5,
+//             "coord1": {
+//                 "x": 4.25,
+//                 "y": 0,
+//                 "z": 0.81
+//             },
+//             "coord2": {
+//                 "x": 5,
+//                 "y": 0.6,
+//                 "z": 2.2
+//             },
+//             "rotation": 0.01
+//         },
+//         {
+//             "id": 6,
+//             "coord1": {
+//                 "x": -7.3,
+//                 "y": 0,
+//                 "z": 0.1
+//             },
+//             "coord2": {
+//                 "x": -6,
+//                 "y": 0.6,
+//                 "z": 2.8
+//             },
+//             "rotation": 0.28
+//         },
+//         {
+//             "id": 7,
+//             "coord1": {
+//                 "x": -8.2,
+//                 "y": 0,
+//                 "z": -2.4
+//             },
+//             "coord2": {
+//                 "x": -7.2,
+//                 "y": 0.7,
+//                 "z": -1
+//             },
+//             "rotation": 0.24
+//         },
+//         {
+//             "id": 8,
+//             "coord1": {
+//                 "x": 5.7,
+//                 "y": -0.2,
+//                 "z": 3.55
+//             },
+//             "coord2": {
+//                 "x": 6.8,
+//                 "y": 0.5,
+//                 "z": 4.6
+//             },
+//             "rotation": 0
+//         }
+//     ];
+//     return coords;
+// }
+
+
+var coordinate_data = {};
+var zone_data = {};
 var selectable_zones = [];
-function zone_data(zoneID) {
-    return selectable_zones[zoneID].data;
+
+async function SetupZones() {
+
+
+    coordinate_data = await Get_Modeling_Data();
+    refresh_zones(coordinate_data);
+    GiveDataToZones();
+
 }
 
+async function GiveDataToZones() {
+    zone_data = await Get_Modal_Data();
 
-function get_coords_TEMP() {
-
-    var coords = [
-        {
-            "id": 0,
-            "coord1": {
-                "x": 1.2,
-                "y": 0,
-                "z": -3.2
-            },
-            "coord2": {
-                "x": 6.8,
-                "y": 1.3,
-                "z": -1.5
-            },
-            "rotation": 0
-        },
-        {
-            "id": 1,
-            "coord1": {
-                "x": -6.8,
-                "y": 0,
-                "z": -2.8
-            },
-            "coord2": {
-                "x": -1.1,
-                "y": 0.7,
-                "z": -1.5
-            },
-            "rotation": 0.12
-        },
-        {
-            "id": 2,
-            "coord1": {
-                "x": -0.4,
-                "y": 0,
-                "z": -3.3
-            },
-            "coord2": {
-                "x": 0.5,
-                "y": 0.8,
-                "z": -1.5
-            },
-            "rotation": 0
-        },
-        {
-            "id": 3,
-            "coord1": {
-                "x": -0.44,
-                "y": 0,
-                "z": -0.63
-            },
-            "coord2": {
-                "x": 0.58,
-                "y": 0.6,
-                "z": 1.1
-            },
-            "rotation": 0
-        },
-        {
-            "id": 4,
-            "coord1": {
-                "x": 5.8,
-                "y": -0.1,
-                "z": -0.5
-            },
-            "coord2": {
-                "x": 6.9,
-                "y": 0.6,
-                "z": 1.3
-            },
-            "rotation": 0
-        },
-        {
-            "id": 5,
-            "coord1": {
-                "x": 4.25,
-                "y": 0,
-                "z": 0.81
-            },
-            "coord2": {
-                "x": 5,
-                "y": 0.6,
-                "z": 2.2
-            },
-            "rotation": 0.01
-        },
-        {
-            "id": 6,
-            "coord1": {
-                "x": -7.3,
-                "y": 0,
-                "z": 0.1
-            },
-            "coord2": {
-                "x": -6,
-                "y": 0.6,
-                "z": 2.8
-            },
-            "rotation": 0.28
-        },
-        {
-            "id": 7,
-            "coord1": {
-                "x": -8.2,
-                "y": 0,
-                "z": -2.4
-            },
-            "coord2": {
-                "x": -7.2,
-                "y": 0.7,
-                "z": -1
-            },
-            "rotation": 0.24
-        },
-        {
-            "id": 8,
-            "coord1": {
-                "x": 5.7,
-                "y": -0.2,
-                "z": 3.55
-            },
-            "coord2": {
-                "x": 6.8,
-                "y": 0.5,
-                "z": 4.6
-            },
-            "rotation": 0
+    for (var i = 0; i < zone_data.length; i++) {
+        for (var n = 0; n < selectable_zones.length; n++) {
+            if (selectable_zones[n].ID == zone_data[i]._id) {
+                selectable_zones[n].data = zone_data[i];
+                break;
+            }
         }
-    ];
-    return coords;
+    }
 }
 
 
-function refresh_zones() {
+
+
+
+function zone_data_get(zone_id) {
+    if (selectable_zones.length == 0) {
+        return undefined;
+    }
+    else {
+        var target = undefined;
+        for (i = 0; i < selectable_zones.length; i++) {
+            if (selectable_zones[i].ID == zone_id) {
+                target = selectable_zones[i].data;
+                return target;
+            }
+        }
+        return target;
+    }
+}
+
+
+function refresh_zones(coords) {
 
     clear_zones();
 
-    var coords = get_coords_TEMP();
-
     standard_size = new THREE.Vector3(2, 1.3, 3);
-
+    //console.log(coords);
     for (i = 0; i < coords.length; i++) {
 
 
 
         new_pos = new THREE.Vector3(i * 3 - 3.4, 0.5, 0);
 
-        new_zone = new Selectable_Zone(i, coords[i]);
+        new_zone = new Selectable_Zone(coords[i]);
         scene.add(new_zone.mesh);
         scene.add(new_zone.line);
         selectable_zones.push(new_zone);
@@ -208,37 +249,8 @@ function clear_zones() {
     }
     selectable_zones = []
 }
-refresh_zones();
 
 
-
-// var cone_geometry1 = new THREE.ConeGeometry(1, 2, 15);
-// var cone_mesh1 = new THREE.Mesh(cone_geometry1, material_light);
-// cone_mesh1.castShadow = true;
-
-// var cone_geometry2 = new THREE.ConeGeometry(1, 1, 15);
-// var cone_mesh2 = new THREE.Mesh(cone_geometry2, material_red);
-// cone_mesh2.castShadow = true;
-
-// var sphere_geometry1 = new THREE.SphereGeometry(1, 15, 15);
-// var sphere_mesh1 = new THREE.Mesh(sphere_geometry1, material_red);
-// sphere_mesh1.castShadow = true;
-
-// var cube_geometry1 = new THREE.CubeGeometry(5, 1, 1);
-// var cube_mesh1 = new THREE.Mesh(cube_geometry1, material_light);
-// cube_mesh1.castShadow = true;
-
-// var cube_geometry2 = new THREE.CubeGeometry(7, 1, 1);
-// var cube_mesh2 = new THREE.Mesh(cube_geometry2, material_light);
-// cube_mesh2.castShadow = true;
-
-// var torusKnot_geometry = new THREE.TorusKnotGeometry(0.5, 0.2, 100, 34);
-// var torusKnot = new THREE.Mesh(torusKnot_geometry, material_blue);
-// torusKnot.castShadow = true;
-
-// var floor_geometry = new THREE.PlaneGeometry(10, 10);
-// var floor_mesh = new THREE.Mesh(floor_geometry, material_grey);
-// floor_mesh.receiveShadow = true;
 
 var loader = new THREE.GLTFLoader();
 
@@ -258,7 +270,7 @@ loader.load('img/Beaurapaire3D.glb', function (gltf) {
 
 });
 
-
+SetupZones();
 
 //## LIGHTS
 
