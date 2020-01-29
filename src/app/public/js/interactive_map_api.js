@@ -6,21 +6,15 @@
  */
 async function Zone_Clicked(zone_ID) {
 
-    console.log("Zone " + zone_ID.toString() + " clicked.");
-    // inserted code by Alex
-    // m=Get_Data_For_Zone(selected_zone.object.userData.ID);
-    // console.log(m);
-    // k = "zone"+zone_ID.toString();
-    k = "myModal"
-    Display(k);
-
-
-    // end of inserted code by Alex
+    // console.log("Zone " + zone_ID.toString() + " clicked.");
 
     // Get_Data_For_Zone() is an async function, requires "await" to force it to
     // wait until the data is returned, otherwise it will return "null" sometimes.
     var this_modal_data = await Get_Data_For_Zone(zone_ID);
-    console.log(this_modal_data);
+    // console.log(this_modal_data);
+
+    k = "myModal"
+    Display(k,this_modal_data);
     // ^ TEMPORARY CONSOLE LOG
 
 
@@ -55,21 +49,31 @@ async function Get_Data_For_Zone(zone_ID) {
 }
 
 // code inserted by Alex
-async function Display(id_zone) {
+async function Display(id_zone,data) {
     // Get the modal
     var modal = document.getElementById(id_zone);
 
     var btn = document.getElementById("CloseBtn");
 
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
     modal.style.display = "block";
 
     // append HTML with javascript
-    var yo = document.getElementById("insertModal");
-    yo.innerHTML = "Maybe we could append different text all the time to the same template."
+    try{
+      document.getElementById("Mheader").innerHTML =
+      `<span class="close">&times;</span>
+      <h3> ${data.feature_title} </h3>`;
+    } catch(error){
+      alert("problem: "+error);
+    }
+    try{
+      document.getElementById("insertModal").innerHTML =
+      `<p> ${data.feature_content} </p>`;
+    } catch(error){
+      alert("problem: "+error);
+    }
 
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
 
     // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
