@@ -4,7 +4,7 @@
  * Also activated when swapped from one zone to another.
  * @param {number} zone_ID
  */
-function Zone_Clicked(zone_ID) {
+async function Zone_Clicked(zone_ID) {
 
     console.log("Zone " + zone_ID.toString() + " clicked.");
     // inserted code by Alex
@@ -13,6 +13,14 @@ function Zone_Clicked(zone_ID) {
     // k = "zone"+zone_ID.toString();
     k = "myModal"
     Display(k);
+
+
+    // Get_Data_For_Zone() is an async function, requires "await" to force it to
+    // wait until the data is returned, otherwise it will return "null" sometimes.
+    var this_modal_data = await Get_Data_For_Zone(zone_ID);
+    console.log(this_modal_data);
+    // ^ TEMPORARY CONSOLE LOG
+
     // end of inserted code by Alex
 }
 
@@ -20,7 +28,7 @@ function Zone_Clicked(zone_ID) {
  * Activated when the current zone is manually deselected.
  * AKA clicked on again.
  */
-function Zone_Deselected() {
+async function Zone_Deselected() {
 
     console.log("Current zone was deselected");
 
@@ -33,13 +41,13 @@ function Zone_Deselected() {
  * @param {number} zone_ID
  */
 async function Get_Data_For_Zone(zone_ID) {
-    let data = zone_data(zone_ID);
+    let data = zone_data_get(zone_ID);
     while (data == undefined) {
         let promise = new Promise((res) => {
             setTimeout(() => res(200), 20)
         });
         await promise;
-        data = zone_data(zone_ID);
+        data = zone_data_get(zone_ID);
     }
     return data;
 }
@@ -69,6 +77,7 @@ async function Display(id_zone) {
     // When the user clicks on Close button, close the modal
     btn.onclick = function () {
         modal.style.display = "none";
+        Deselect_Zone();
     }
 
     // When the user clicks anywhere outside of the modal, close it
@@ -102,6 +111,7 @@ async function GetAllData() {
 //Retrieve only modeling-specific data (feature id, coordinates 1, coordinates 2, rotation)
 async function Get_Modeling_Data() {
     let data = await GetAllData();
+    await new Promise(r => setTimeout(r, 4000));
     modeling_data = [];
     for (var i = 0; i < data.length; i++) {
         _id = data[i]._id;
@@ -112,7 +122,7 @@ async function Get_Modeling_Data() {
         entry = { "_id": _id, "coordinates_1": coordinates_1, "coordinates_2": coordinates_2, "rotation": rotation }
         modeling_data.push(entry);
     }
-    //console.log(modeling_data);
+    // console.log(modeling_data);
     return modeling_data
 }
 //Get_Modeling_Data();
@@ -120,6 +130,9 @@ async function Get_Modeling_Data() {
 //Retrieve modal-specific data (feature id, modal title, modal content)
 async function Get_Modal_Data() {
     let data = await GetAllData();
+
+    //await new Promise(r => setTimeout(r, 10000));
+
     modal_data = [];
     for (var i = 0; i < data.length; i++) {
         _id = data[i]._id;
