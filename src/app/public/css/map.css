@@ -126,6 +126,14 @@
   padding: 0.5rem;
 }
 
+.navbar-brand, .nav-link {
+  color: black !important;
+}
+
+.nav-link:hover {
+  color: #10c400 !important;
+}
+
 /* Add Animation */
 @keyframes animatetop {
   from {top: -300px; opacity: 0}
