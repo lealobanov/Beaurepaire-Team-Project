@@ -21,7 +21,7 @@ renderer.setSize(container.scrollWidth, container.scrollHeight);
 // var material_blue = new THREE.MeshPhysicalMaterial({ color: 0x444444 });
 // material_blue.roughness = 0.1;
 
-var material_selectable = new THREE.MeshPhongMaterial({ color: 0xd06050 });
+var material_selectable = new THREE.MeshPhongMaterial({ color: 0x90e090 });//0xd06050
 material_selectable.opacity = 0.2;
 material_selectable.transparent = true;
 material_selectable.name = "selectable";
@@ -36,7 +36,7 @@ material_selected.opacity = 0.4;
 material_selected.transparent = true;
 material_selected.name = "selectable";
 
-var material_dashed_lines = new THREE.LineBasicMaterial({ color: 0xd18340 });
+var material_dashed_lines = new THREE.LineBasicMaterial({ color: 0x10c353 });//0xd18340
 material_dashed_lines.linewidth = 2;
 
 // function get_coords_TEMP() {
