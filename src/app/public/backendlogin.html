@@ -12,49 +12,54 @@
 
 	<!--Custom styles-->
 	<link rel="stylesheet" type="text/css" href="./css/backend.css">
+	<link rel="stylesheet" type="text/css" href="./css/creative.min.css">
 </head>
 
 <body>
     <div class="header">
         <img src="img/logo.png" alt="logo"/>
         <h2>Sandman</h2>
-        <h3>Admin tool for DREAM Heritage CIC</h3>
-      </div>
-<div class="container">
-	<div class="d-flex justify-content-center h-100">
-		<div class="card px-md-3">
-			<div class="card-header">
-				<h3>Sign In</h3>
-			</div>
-			<div class="card-body">
-				<form>
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-user"></i></span>
+        <h4 class="text-muted">Admin tool for DREAM Heritage CIC</h4>
+	</div>
+	
+	<div class="container">
+		<div class="d-flex justify-content-center h-100">
+			<div class="card">
+				<div class="card-header">
+					<h3>Sign In</h3>
+				</div>
+				<div class="card-body">
+					<form>
+						<div class="input-group form-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							<input type="text" class="form-control" placeholder="Username" id="username_login">
+							
 						</div>
-						<input type="text" class="form-control" placeholder="username" id="username_login">
-						
-					</div>
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						<div class="input-group form-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+							<input type="password" class="form-control" placeholder="Password" id="password_login">
 						</div>
-						<input type="password" class="form-control" placeholder="password" id="password_login">
-					</div>
-					<div class="form-group">
-						<button type="button" value="Login" id="btnLogin" class="btn float-right login_btn" href="/features/list">Log In</button>
-					</div>
-				</form>
-			</div>
+						<div class="form-group">
+							<button type="button" value="Login" id="btnLogin" class="btn btn-primary float-right login-btn" href="/features/list">Log In</button>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
-  </div>
-</div>
-<footer style="background-color:rgba(255, 255, 255, 0.76)" class="py-5">
+	</div>
+
+<footer class="bg-light py-5">
     <div class="container">
-      <div class="small text-center text-muted">Copyright &copy; 2020 - Dream Heritage CIC</div>
+	  <div class="small text-center text-muted">Copyright &copy; 2020 - <a href="https://e-voice.org.uk/dreamcommunity/">Dream Heritage CIC</a>
+	  </br>
+	  <a href="../index.html" style="color: #10C400;">Return to Main Webpage</a>
+	  </div>
     </div>
-  </footer>
+</footer>
 
    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>

@@ -15,18 +15,18 @@ font-family: 'Numans', sans-serif;
 }
 
 .container{
-height: 100%;
+height: 75%;
 align-content: center;
 }
 
 .card{
 border-radius: 3%;
-height: 370px;
 margin-top: auto;
 margin-bottom: auto;
-width: 600px;
+width: 50%;
 color: black;
 background-color: rgb(255, 255, 255) !important;
+vertical-align: center;
 }
 
 .social_icon span{
@@ -76,17 +76,18 @@ margin-left: 15px;
 margin-right: 5px;
 }
 
-.login_btn{
+.login-btn{
 font-size: 1.25em;
 color: white;
-background-color: rgb(230, 176, 16);
+background-color: rgb(230, 176, 16) !important;
+border-color: rgb(220, 166, 06) !important;
 width: 25%;
 height: 100%;
 }
 
-.login_btn:hover{
+.login-btn:hover{
 color: black;
-background-color: rgb(177, 136, 14);
+background-color: rgb(177, 136, 14) !important;
 }
 
 .links{
@@ -100,14 +101,13 @@ margin-left: 4px;
 .footer{
     height: 50%;
     width : 100%;
-    background-color:rgba(255, 255, 255, 0.76);
 }
 
 .header{
     padding-top: 2em;
     padding-bottom: 2em;
     padding-left: 2em;
-    background: rgba(255, 255, 255, 0.76);
+    background: rgba(255, 255, 255, 1);
     height: 150px
 }
 
