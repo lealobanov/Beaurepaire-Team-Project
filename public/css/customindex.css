@@ -1,0 +1,104 @@
+.picturesrow {
+  display: flex;
+}
+
+.picturescolumn {
+  flex: 33.33%;
+}
+
+.pic {
+  filter: brightness(40%);
+  transition: 0.5s;
+}
+
+.pic:hover {
+  filter: brightness(100%);
+}
+
+.header.masthead {
+  height: 100%;
+  width: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+@media screen and (min-width:600px), screen and (min-height:600px) {
+  .mobile {display: none !important;}
+  .desktop {display: block !important;}
+}
+
+@media screen and (max-height:600px) {
+  .mobile {display: block !important;}
+  .desktop {display: none !important;}
+}
+
+@media screen and (max-width:600px) {
+  .mobile {display: block !important;}
+  .desktop {display: none !important;}
+}
+
+.galleryImg{
+  transition: 0.3s;
+}
+
+.galleryModal{
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.9);
+}
+
+.galleryModal-content{
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+.galleryModal-content{
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom{
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes zoom{
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+}
+
+.close{
+  position: absolute;
+  top: 20%px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover, .close:focus{
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 700px){
+  .galleryModal-content{
+    width: 100%;
+  }
+}
