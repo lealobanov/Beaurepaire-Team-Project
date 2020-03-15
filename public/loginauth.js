@@ -31,7 +31,7 @@ btnLogin.addEventListener('click', e => {
     .then(function(val) {
       //Success!!
       console.log(val);
-      window.location = '/features/list';
+      window.location = './features/list';
     })
     
     .catch(function(error) {
@@ -49,6 +49,7 @@ btnLogin.addEventListener('click', e => {
 firebase.auth().onAuthStateChanged(firebaseUser => {
   if(firebaseUser){
     console.log("Logged in.");
+    console.log(firebaseUser)
     //btnLogout.classList.remove('d-none');
     //btnMyPosts.classList.remove('d-none');
     //btnLoginheader.classList.add('d-none');
@@ -62,10 +63,10 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
 
 // Logout current user
-btnLogout.addEventListener('click', e => {
+btnLogoutTest.addEventListener('click', e => {
   console.log("got logout click")
   firebase.auth().signOut();
-  window.location = '/backendlogin.html';
+  //window.location = '/backendlogin.html';
 });
 
 
