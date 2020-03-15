@@ -10,7 +10,7 @@ var firebaseConfig = {
   measurementId: "G-VLTKYP402W"
 };
 // Initialize Firebase
-//firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
 
 
