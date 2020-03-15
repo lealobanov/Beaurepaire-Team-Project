@@ -19,6 +19,7 @@ const txtEmail = document.getElementById('username_login');
 const txtPassword = document.getElementById('password_login');
 const btnLogin = document.getElementById('btnLogin');
 const btnLogout = document.getElementById('btnLogout');
+const btnLogoutTest = document.getElementById('btnLogoutTest');
 
 // Authenticate user login
 btnLogin.addEventListener('click', e => {
@@ -64,9 +65,11 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
 // Logout current user
 btnLogoutTest.addEventListener('click', e => {
-  console.log("got logout click")
+  console.log("got logout click from inside")
   firebase.auth().signOut();
-  //window.location = '/backendlogin.html';
+  window.location = '/backendlogin.html';
 });
+
+
 
 
