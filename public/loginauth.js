@@ -27,16 +27,21 @@ btnLogin.addEventListener('click', e => {
   const password = txtPassword.value;
   console.log(password)
   console.log("got click")
-
-  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+  firebase.auth().signInWithEmailAndPassword(email, password)
+    .then(function(val) {
+      //Success!!
+      console.log(val);
+      window.location = '/features/list';
+    })
+    
+    .catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
     console.log(errorMessage)
+    console.log("couldn't log in")
     // ...
-  window.location = '/features/list';
-  });
-  
+  }); 
 
 });
 
@@ -48,12 +53,14 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
     //btnMyPosts.classList.remove('d-none');
     //btnLoginheader.classList.add('d-none');
     //btnRegisterheader.classList.add('d-none');
-    //window.location = '/features/list';
   } else {
     console.log('Not logged in.');
     //btnLogout.classList.add('d-none');
     
   }
+});
+
+
 // Logout current user
 btnLogout.addEventListener('click', e => {
   console.log("got logout click")
@@ -61,4 +68,4 @@ btnLogout.addEventListener('click', e => {
   window.location = '/backendlogin.html';
 });
 
-});
+
