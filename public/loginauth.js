@@ -12,14 +12,12 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-
-
 // Defining Firebase authentication elements
 const txtEmail = document.getElementById('username_login');
 const txtPassword = document.getElementById('password_login');
 const btnLogin = document.getElementById('btnLogin');
-const btnLogout = document.getElementById('btnLogout');
 const btnLogoutTest = document.getElementById('btnLogoutTest');
+const btnLogoutHBS = document.getElementById('btnLogoutHBS');
 
 // Authenticate user login
 btnLogin.addEventListener('click', e => {
@@ -30,8 +28,7 @@ btnLogin.addEventListener('click', e => {
   console.log("got click")
   firebase.auth().signInWithEmailAndPassword(email, password)
     .then(function(val) {
-      //Success!!
-      console.log(val);
+      //Success - redirect to admin page
       window.location = './features/list';
     })
     
@@ -40,8 +37,7 @@ btnLogin.addEventListener('click', e => {
     var errorCode = error.code;
     var errorMessage = error.message;
     console.log(errorMessage)
-    console.log("couldn't log in")
-    // ...
+    console.log("Login attempt failed.")
   }); 
 
 });
@@ -51,21 +47,15 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
   if(firebaseUser){
     console.log("Logged in.");
     console.log(firebaseUser)
-    //btnLogout.classList.remove('d-none');
-    //btnMyPosts.classList.remove('d-none');
-    //btnLoginheader.classList.add('d-none');
-    //btnRegisterheader.classList.add('d-none');
   } else {
     console.log('Not logged in.');
-    //btnLogout.classList.add('d-none');
-    
   }
 });
 
 
 // Logout current user
-btnLogoutTest.addEventListener('click', e => {
-  console.log("got logout click from inside")
+
+btnLogoutHBS.addEventListener('click', e => {
   firebase.auth().signOut();
   window.location = '/backendlogin.html';
 });
