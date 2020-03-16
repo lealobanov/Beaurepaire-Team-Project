@@ -11,7 +11,7 @@
     <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
 </head>
 
-<body class="bg-info" style="background-color: #E8E8E8 !important;">
+<body class="bg-info" id="bg-info"  style="background-color: #E8E8E8 !important;">
     <!-- Navigation -->
   <nav class="navbar fixed-top navbar-expand-xl mw-100" id="mainNav" style="background-color: #fff;">
     <div class="container-fluid">
@@ -27,7 +27,7 @@
           </li>
           <li class="nav-item">
               <!--Redirect to main site-->
-            <a class="btn btn-secondary" style="background-color: #10C400; border-color: #10C400; margin-left: 10px; color: white;" id="btnLogout">Logout</a>
+            <a class="btn btn-secondary" style="background-color: #10C400; border-color: #10C400; margin-left: 10px; color: white;" id="btnLogoutHBS">Logout</a>
           </li>
         </ul>
       </div>
@@ -52,16 +52,35 @@
       </div>
     </div>
   </footer>
-<script>
 
-  const btnLogout = document.getElementById('btnLogout');
-  // Logout current user
-btnLogout.addEventListener('click', e => {
-  console.log("got logout click")
-  //firebase.auth().signOut();
-  window.location = '/backendlogin.html';
-});
-</script>
+<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+   <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"><{{!}}/script> 
+   <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-analytics.js"><{{!}}/script> 
+   <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"><{{!}}/script> 
+   <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-firestore.js"><{{!}}/script>
+   <script src="../loginauth.js"><{{!}}/script>  
+
+   <script>
+    document.getElementById("bg-info").style.visibility = 'hidden'; 
+
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+      if(firebaseUser){
+        console.log("Logged in.");
+        console.log(firebaseUser);
+        document.getElementById("bg-info").style.visibility = 'visible'; 
+        
+      
+      } else {
+        console.log('Not logged in.');
+      }
+
+      btnLogoutHBS.addEventListener('click', e => {
+      firebase.auth().signOut();
+      window.location = '/backendlogin.html';
+    });
+    });
+    <{{!}}/script>
+
 
 </body>
 
