@@ -161,3 +161,14 @@ screen and (min-height:600px) {
   background: rgb(0, 129, 189);
   cursor: pointer;
 }
+
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
