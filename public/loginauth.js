@@ -35,6 +35,7 @@ btnLogin.addEventListener('click', e => {
     var errorMessage = error.message;
     console.log(errorMessage)
     console.log("Login attempt failed.")
+    document.getElementById("errMsg").style.visibility = "visible";
   }); 
 
 });

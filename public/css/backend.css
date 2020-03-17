@@ -134,3 +134,10 @@ margin-left: 4px;
     line-height: 1.5px;
     margin-top: 50px;
   }
+
+  #errMsg {
+    text-align: center;
+    color: #ff0000;
+    font-style: italic;
+    visibility: hidden;
+  }
