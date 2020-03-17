@@ -22,10 +22,7 @@ const btnLogoutHBS = document.getElementById('btnLogoutHBS');
 // Authenticate user login
 btnLogin.addEventListener('click', e => {
   const email = txtEmail.value;
-  console.log(email)
   const password = txtPassword.value;
-  console.log(password)
-  console.log("got click")
   firebase.auth().signInWithEmailAndPassword(email, password)
     .then(function(val) {
       //Success - redirect to admin page
@@ -46,7 +43,6 @@ btnLogin.addEventListener('click', e => {
 firebase.auth().onAuthStateChanged(firebaseUser => {
   if(firebaseUser){
     console.log("Logged in.");
-    console.log(firebaseUser)
   } else {
     console.log('Not logged in.');
   }
