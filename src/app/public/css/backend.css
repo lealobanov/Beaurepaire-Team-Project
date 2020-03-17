@@ -43,7 +43,6 @@ body {
 
 .card-header h3 {
   color: rgb(0, 0, 0);
-  text-shadow: 3px 2px white;
 }
 
 .social_icon {
@@ -54,7 +53,7 @@ body {
 
 .input-group-prepend span {
   width: 50px;
-  background-color: rgb(230, 176, 16);
+  background-color: #10c400;
   color: white;
   border: 0 !important;
 }
@@ -133,4 +132,10 @@ input:focus {
   background: #f7f7f7;
   line-height: 1.5px;
   margin-top: 50px;
+}
+
+.admin-footer {
+  position: absolute; 
+  width: 100%; 
+  bottom: 0;
 }

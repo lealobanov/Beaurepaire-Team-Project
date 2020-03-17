@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Login Page</title>
-   <!--Made with love by Mutiullah Samim -->
+	<title>Admin Login</title>
    
 	<!--Bootsrap 4 CDN-->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -16,11 +15,16 @@
 </head>
 
 <body>
-    <div class="header">
-        <img src="img/logo.png" alt="logo"/>
-        <h2>Sandman</h2>
-        <h4 class="text-muted">Admin tool for DREAM Heritage CIC</h4>
-	</div>
+	<nav class="navbar navbar-expand-lg navbar-light py-2" id="mainNav">
+		<div class="container">
+			<a class="title navbar-brand js-scroll-trigger" href="#page-top">Administrator Portal</a>
+			<ul class="navbar-nav ml-auto my-2 my-lg-0">
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger" href="./index.html">Back to main website</a>
+				</li>
+		  	</ul>
+		</div>
+	</nav>
 	
 	<div class="container">
 		<div class="d-flex justify-content-center h-100">
@@ -44,7 +48,7 @@
 							<input type="password" class="form-control" placeholder="Password" id="password_login">
 						</div>
 						<div class="form-group">
-							<button type="button" value="Login" id="btnLogin" class="btn btn-primary float-right login-btn" href="/features/list">Log In</button>
+							<button type="button" value="Login" id="btnLogin" class="btn btn-primary float-right" href="/features/list">Log In</button>
 						</div>
 					</form>
 				</div>
@@ -52,14 +56,14 @@
 		</div>
 	</div>
 
-<footer class="bg-light py-5">
-    <div class="container">
-	  <div class="small text-center text-muted">Copyright &copy; 2020 - <a href="https://e-voice.org.uk/dreamcommunity/">Dream Heritage CIC</a>
-	  </br>
-	  <a href="../index.html" style="color: #10C400;">Return to Main Webpage</a>
-	  </div>
-    </div>
-</footer>
+	<footer class="bg-light py-5 admin-footer" style="position: absolute; width: 100%; bottom: 0;">
+		<div class="container">
+		<div class="small text-center text-muted">Copyright &copy; 2020 - <a href="https://e-voice.org.uk/dreamcommunity/">Dream Heritage CIC</a>
+		</br>
+		<a href="../index.html" style="color: #10C400;">Return to Main Webpage</a>
+		</div>
+		</div>
+	</footer>
 
    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
