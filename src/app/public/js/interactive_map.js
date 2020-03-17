@@ -41,10 +41,18 @@ material_selected.opacity = 0.4;
 material_selected.transparent = true;
 material_selected.name = "selectable";
 
-var material_dashed_lines = new THREE.LineBasicMaterial({ color: 0x10c353 });//0xd18340
+var material_dashed_lines = new THREE.LineBasicMaterial({ color: 0x10c353 });
 material_dashed_lines.linewidth = 2;
 
 if (adminMode) {
+    // material_selected.opacity = 0.2;
+    // material_hovering.opacity = 0.3;
+    material_selectable.opacity = 0.05;
+    // material_dashed_lines = new THREE.LineBasicMaterial({ color: 0x043313 });
+    // material_selected.color = 0x90e090;
+    // material_hovering.color = 0x3030f0;
+    // material_selectable.color =new THREE.color();
+
     var material_helper_grid = new THREE.LineBasicMaterial({ color: 0x10c353 });//0xd18340
     material_helper_grid.opacity = 0;
     material_helper_grid.transparent = true;
@@ -52,7 +60,7 @@ if (adminMode) {
 
 
     var material_temporary_zone = new THREE.LineBasicMaterial({ color: 0x99C5DE });//0xd18340
-    material_temporary_zone.opacity = 0.4;
+    material_temporary_zone.opacity = 0.6;
     material_temporary_zone.transparent = true;
 
     var material_temporary_zone_lines = new THREE.LineBasicMaterial({ color: 0x0e20e0 });//0xd18340
@@ -306,6 +314,13 @@ var light = new THREE.AmbientLight(0x202020);
 
 //## CAMERA CONTROL
 var camera = new THREE.PerspectiveCamera(85, container.scrollWidth / container.scrollHeight, 0.1, 1000);
+if (adminMode) {
+    const width = 600;
+    const height = 300;
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+    renderer.setSize(width, height);
+}
 var controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.05;
@@ -409,10 +424,18 @@ window.addEventListener('keydown', keyDown, false);
 window.addEventListener('keyup', keyUp, false);
 
 function onWindowResize() {
-    camera.aspect = container.scrollWidth / container.scrollHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(container.scrollWidth, container.scrollHeight);
-    console.log("resized");
+    if (adminMode) {
+        const width = 600;
+        const height = 300;
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+        renderer.setSize(width, height);
+    } else {
+        camera.aspect = container.scrollWidth / container.scrollHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.scrollWidth, container.scrollHeight);
+    }
+
 }
 
 var hovering_zone = undefined;
@@ -434,6 +457,13 @@ function onTouchStart(event) {
     }
     mouse_pos.x = ((x_in - renderer.domElement.offsetLeft) / renderer.domElement.width) * 2 - 1;
     mouse_pos.y = - ((y_in - renderer.domElement.offsetTop) / renderer.domElement.height) * 2 + 1;
+
+    if (adminMode) {
+        let dom_rect = renderer.domElement.getBoundingClientRect();
+        mouse_pos.x = ((x_in - dom_rect.x) / renderer.domElement.width) * 2 - 1;
+        mouse_pos.y = - ((y_in - dom_rect.y) / renderer.domElement.height) * 2 + 1;
+    }
+
     dragging = true;
 
     if (adminMode == false) {
@@ -465,6 +495,11 @@ function onTouchEnd(event) {
 
     mouse_pos.x = ((x_in - renderer.domElement.offsetLeft) / renderer.domElement.width) * 2 - 1;
     mouse_pos.y = - ((y_in - renderer.domElement.offsetTop) / renderer.domElement.height) * 2 + 1;
+    if (adminMode) {
+        let dom_rect = renderer.domElement.getBoundingClientRect();
+        mouse_pos.x = ((x_in - dom_rect.x) / renderer.domElement.width) * 2 - 1;
+        mouse_pos.y = - ((y_in - dom_rect.y) / renderer.domElement.height) * 2 + 1;
+    }
     target = raycast(mouse_pos);
     successful_select = false;
     dragging = false;
@@ -511,6 +546,11 @@ function onTouchDrag(event) {
     }
     mouse_pos.x = ((x_in - renderer.domElement.offsetLeft) / renderer.domElement.width) * 2 - 1;
     mouse_pos.y = - ((y_in - renderer.domElement.offsetTop) / renderer.domElement.height) * 2 + 1;
+    if (adminMode) {
+        let dom_rect = renderer.domElement.getBoundingClientRect();
+        mouse_pos.x = ((x_in - dom_rect.x) / renderer.domElement.width) * 2 - 1;
+        mouse_pos.y = - ((y_in - dom_rect.y) / renderer.domElement.height) * 2 + 1;
+    }
 }
 
 let new_zone_being_dragged = false;
@@ -532,8 +572,15 @@ function StartZoneDrag() {
     } else {
         new_zone_being_dragged = true;
         new_zone_rendered = true;
+        rotate_slider.disabled = false;
+        height_slider.disabled = false;
+        rotate_slider.style.opacity = 1;
+        rotate_label.style.opacity = 1;
+        height_slider.style.opacity = 1;
+        height_label.style.opacity = 1;
+
         start_point = hit_point;
-        original_start_point = hit_point;
+        original_start_point = new THREE.Vector3(start_point.x, start_point.y, start_point.z);
         end_point = new THREE.Vector3(start_point.x, start_point.y, start_point.z);
         original_end_point = new THREE.Vector3(start_point.x, start_point.y, start_point.z);
         temporary_zone.material.visible = true;
@@ -609,11 +656,95 @@ function DoDrag() {
         }
     }
 }
+var rotate_label = undefined;
+var rotate_slider = undefined;
+var height_label = undefined;
+var height_slider = undefined;
+var coordinate_entry_point1 = undefined;
+var coordinate_entry_point2 = undefined;
+var rotation_entry_point = undefined;
+
+
+function attempt_parse_coord(coord) {
+    var no_b1 = coord.replace("(", "");
+    var no_b2 = no_b1.replace(")", "");
+    var split = no_b2.split(",");
+    if (split.length != 3) {
+        return undefined;
+    }
+    var coord_new = {
+        "x": parseFloat(split[0]),
+        "y": parseFloat(split[1]),
+        "z": parseFloat(split[2])
+    }
+
+    if (isNaN(coord_new.x) || isNaN(coord_new.y) || isNaN(coord_new.z)) {
+        return undefined;
+    }
+    return coord_new;
+}
+
+if (adminMode) {
+    rotate_label = document.getElementById("rotateChangerLabel");
+    rotate_slider = document.getElementById("rotateChanger");
+    height_label = document.getElementById("heightChangerLabel");
+    height_slider = document.getElementById("heightChanger");
+    coordinate_entry_point1 = document.getElementById("coord_entry_1");
+    coordinate_entry_point2 = document.getElementById("coord_entry_2");
+    rotation_entry_point = document.getElementById("rotation_entry");
+
+    // rotate_slider.domElement.addEventListener('touchend', onTouchEnd, false);
+    rotate_slider.oninput = function () {
+        let new_val = -(rotate_slider.value / 360) * Math.PI * 2;
+        SetRotate(new_val);
+    }
+    height_slider.oninput = function () {
+        let new_val = height_slider.value / 100;
+        SetRaise(new_val);
+    }
+    coordinate_entry_point1.oninput = function () {
+
+        let new_coord = attempt_parse_coord(coordinate_entry_point1.value);
+        if (new_coord != undefined) {
+            start_point = new THREE.Vector3(new_coord.x, new_coord.y, new_coord.z);
+            Render_Temp_Zone();
+        }
+    }
+    coordinate_entry_point2.oninput = function () {
+        let new_coord = attempt_parse_coord(coordinate_entry_point2.value);
+        if (new_coord != undefined) {
+            end_point = new THREE.Vector3(new_coord.x, new_coord.y, new_coord.z);
+            Render_Temp_Zone();
+        }
+    }
+    rotation_entry_point.oninput = function () {
+
+        let new_val = parseFloat(rotation_entry_point.value);
+        if (isNaN(new_val) != true) {
+            SetRotate(-(new_val / 360) * Math.PI * 2);
+        }
+    }
+    coordinate_entry_point2.value = "";
+    coordinate_entry_point1.value = "";
+    rotation_entry_point.value = "";
+    rotate_slider.disabled = true;
+    height_slider.disabled = true;
+    rotate_slider.style.opacity = 0.5;
+    rotate_label.style.opacity = 0.5;
+    height_slider.style.opacity = 0.5;
+    height_label.style.opacity = 0.5;
+}
+
+// renderer.domElement.addEventListener('touchend', onTouchEnd, false);
+
 function SetRaise(new_raise) {
     start_point.y = original_start_point.y + new_raise;
     end_point.y = original_end_point.y + new_raise;
     NewCoords(start_point, end_point, rotate);
     Render_Temp_Zone();
+
+
+
 }
 function SetRotate(new_rotate) {
     rotate = new_rotate;
@@ -622,9 +753,14 @@ function SetRotate(new_rotate) {
 }
 
 function NewCoords(start, end, rot) {
-    console.log("Start:", start);
-    console.log("End:", end);
-    console.log("Rotation:", rot);
+
+    coordinate_entry_point1.value = "(" + start.x.toFixed(2).toString() + "," + start.y.toFixed(2).toString() + "," + start.z.toFixed(2).toString() + ")";
+    coordinate_entry_point2.value = "(" + end.x.toFixed(2).toString() + "," + end.y.toFixed(2).toString() + "," + end.z.toFixed(2).toString() + ")";
+    rotation_entry_point.value = (-360 * (rot / (Math.PI * 2))).toFixed(2).toString();
+
+    // console.log("Start:", start);
+    // console.log("End:", end);
+    // console.log("Rotation:", rot);
 }
 
 
@@ -639,6 +775,10 @@ function ClearZoneDrag() {
 
     temporary_zone.material.visible = false;
     temp_zone_lines.material.visible = false;
+    rotate_slider.value = 0;
+    height_slider.value = 0;
+    rotate_slider.disabled = true;
+    height_slider.disabled = true;
 }
 
 
