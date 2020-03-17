@@ -139,3 +139,10 @@ input:focus {
   width: 100%; 
   bottom: 0;
 }
+
+#errMsg {
+  text-align: center;
+  color: #FF0000;
+  font-style: italic;
+  visibility: hidden;
+}

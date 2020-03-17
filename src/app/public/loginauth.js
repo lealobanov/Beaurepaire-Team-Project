@@ -23,18 +23,19 @@ const btnLogout = document.getElementById('btnLogout');
 // Authenticate user login
 btnLogin.addEventListener('click', e => {
   const email = txtEmail.value;
-  console.log(email)
+  console.log(email);
   const password = txtPassword.value;
-  console.log(password)
-  console.log("got click")
+  console.log(password);
+  console.log("got click");
   //Force to client portal w/out auth 
   window.location = '/features/list';
   firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
-    console.log(errorMessage)
-    // ...
+    console.log(errorMessage);
+    console.log("Login attempt failed.");
+    document.getElementById("errMsg").style.visibility = "visible";
   });
   
 
@@ -56,7 +57,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
   }
 // Logout current user
 btnLogout.addEventListener('click', e => {
-  console.log("got logout click")
+  console.log("got logout click");
   firebase.auth().signOut();
   window.location = '/backendlogin.html';
 });
