@@ -24,6 +24,14 @@
   display: none;
 }
 
+.adminFooter {
+  bottom: 0;
+  position: -webkit-sticky;
+  width: 100%;
+  padding: 1%;
+  background-color: #E8E8E8;
+}
+
 @media screen and (min-width:600px),
 screen and (min-height:600px) {
   .mobile {
