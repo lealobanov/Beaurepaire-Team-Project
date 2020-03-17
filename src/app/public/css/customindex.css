@@ -73,6 +73,21 @@ screen and (min-height:600px) {
   background-color: rgba(0, 0, 0, 0.9);
 }
 
+#directions {
+  background-image: url("../img/pictureboard/img1.jpg");
+  background-position: center;
+  background-size: cover;
+  padding: 0%;
+  position: relative;
+}
+
+.layer {
+  background-color: hsla(115, 100%, 38%, 0.9);
+  position: relative;
+  height: auto;
+  padding: 3%;
+}
+
 .galleryModal-content {
   margin: auto;
   display: block;
