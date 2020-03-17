@@ -57,14 +57,19 @@
 /* code inserted by Alex */
 /* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
+  display: none;
+  /* Hidden by default */
   position: relative;
   left: 25%;
-  z-index: 1; /* Sit on top */
+  z-index: 1;
+  /* Sit on top */
   top: 4;
-  width: 75% !important; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
+  width: 75% !important;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
 }
 
 /* The Close Button */
@@ -81,6 +86,7 @@
   text-decoration: none;
   cursor: pointer;
 }
+
 /* Modal Header */
 .Mheader {
   text-align: center;
@@ -107,7 +113,7 @@
   margin: 15% auto;
   padding: 0px 0px 10px 0px;
   width: 80%;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   animation-name: animatetop;
   animation-duration: 0.4s
 }
@@ -116,18 +122,29 @@
   padding: 0.5rem;
 }
 
-.navbar-brand, .nav-link {
+.navbar-brand {
   color: black !important;
 }
 
-.navbar-brand:hover, .nav-link:hover {
+.nav-link {
+  color: #6c757d !important;
+}
+
+.nav-link:hover {
   color: #10c400 !important;
 }
 
 /* Add Animation */
 @keyframes animatetop {
-  from {top: -300px; opacity: 0}
-  to {top: 0; opacity: 1}
+  from {
+    top: -300px;
+    opacity: 0
+  }
+
+  to {
+    top: 0;
+    opacity: 1
+  }
 }
 
 /* end of code inserted by Alex */
