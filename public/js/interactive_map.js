@@ -285,7 +285,7 @@ function clear_zones() {
 
 var loader = new THREE.GLTFLoader();
 
-loader.load('img/Beaurapaire3D.glb', function (gltf) {
+loader.load('../img/Beaurapaire3D.glb', function (gltf) {
 
     scene.add(gltf.scene);
     gltf.scene.scale.set(0.008, 0.008, 0.008);
