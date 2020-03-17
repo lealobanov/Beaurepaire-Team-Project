@@ -1,9 +1,6 @@
 //material_dashed_lines.dashSize= 3;
 //## GEOMETRY AND MESHES
 class Selectable_Zone {
-    test = 1;
-    mesh;
-    line;
 
     parse_coord(coord) {
         var no_b1 = coord.replace("(", "");
@@ -18,6 +15,9 @@ class Selectable_Zone {
     }
 
     constructor(coords) {
+        this.test = 1;
+        this.mesh;
+        this.line;
         //console.log(coords);
         this.ID = coords._id; //WARNING THIS DOES NOT MATCH WITH COORDS ID
 

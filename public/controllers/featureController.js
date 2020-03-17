@@ -52,6 +52,7 @@ function insertRecord(req, res) {
     feature.coordinates_1 = req.body.coordinates_1;
     feature.coordinates_2 = req.body.coordinates_2;
     feature.rotation = req.body.rotation;
+    feature.link = req.body.link;
     feature.save((err, doc) => {
         if (!err)
             res.redirect('features/list');

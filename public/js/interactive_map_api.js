@@ -71,6 +71,12 @@ async function Display(id_zone,data) {
     } catch(error){
       alert("problem: "+error);
     }
+    try{
+        document.getElementById("insertLink").innerHTML =
+        `<img src="${data.link}" alt="Image of feature" style="width:80%;height=60%;">`;
+      } catch(error){
+        //Feature did not contain an image so no image shall be displayed
+      }
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
@@ -144,7 +150,8 @@ async function Get_Modal_Data() {
         //In the future images and other media will be served here
         feature_title = data[i].feature_title;
         feature_content = data[i].feature_content;
-        entry = { "_id": _id, "feature_title": feature_title, "feature_content": feature_content }
+        link = data[i].link;
+        entry = { "_id": _id, "feature_title": feature_title, "feature_content": feature_content, "link": link }
         modal_data.push(entry);
     }
     //console.log(modal_data);

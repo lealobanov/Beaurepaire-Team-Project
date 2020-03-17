@@ -17,6 +17,10 @@ var featureSchema = new mongoose.Schema({
         type: String,
         required: 'This field is required.'
     },
+    link: {
+        type: String,
+        required: 'This field is required.'
+    },
     rotation: {
         type: String,
         required: 'This field is required.'
