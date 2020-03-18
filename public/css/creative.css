@@ -6264,6 +6264,10 @@ button.bg-danger:focus {
   background-color: #bd2130 !important;
 }
 
+.bg-clear {
+  background-color: rgba(255, 255, 255, 0) !important;
+}
+
 .bg-light {
   background-color: #f8f9fa !important;
 }
@@ -9361,6 +9365,10 @@ button.bg-dark:focus {
 
 .text-white {
   color: #fff !important;
+}
+
+.text-light-grey {
+  color: #d0cdcb !important;
 }
 
 .text-primary {

@@ -138,6 +138,7 @@ input:focus {
   position: absolute; 
   width: 100%; 
   bottom: 0;
+  background-color: rgba(255, 255, 255, 0) !important;
 }
 
 #errMsg {
@@ -146,3 +147,4 @@ input:focus {
   font-style: italic;
   visibility: hidden;
 }
+

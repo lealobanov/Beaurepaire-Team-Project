@@ -73,7 +73,7 @@ async function Display(id_zone,data) {
     }
     try{
         document.getElementById("insertLink").innerHTML =
-        `<img src="${data.link}" alt="Image of feature" style="width:80%;height=60%;">`;
+        `<img src="${data.link}" alt="Image of feature" class="image">`;
       } catch(error){
         //Feature did not contain an image so no image shall be displayed
       }
