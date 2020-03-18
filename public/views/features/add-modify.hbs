@@ -35,6 +35,11 @@
     .float-right {
         float: right !important;
     }
+
+    .required {
+        color: red;
+    }
+    
 </style>
 
 
@@ -44,20 +49,20 @@
 
     <input type="hidden" name="_id" value="{{feature._id}}">
     <div class="form-group">
-        <label>Feature Name</label>
-        <input type="text" class="form-control" name="feature_title" placeholder="" value="{{feature.feature_title}}">
+        <label>Feature Name</label><span class="required">*</span>
+        <input type="text" class="form-control" name="feature_title" placeholder="Add a title" value="{{feature.feature_title}}" required>
         <div class="text-danger">
             {{feature.featureTitleError}}</div>
     </div>
     <div class="form-group">
-        <label>Feature Content</label>
+        <label>Feature Content</label><span class="required">*</span>
         <textarea class="form-control" rows="10" name="feature_content"
-            placeholder="">{{feature.feature_content}}</textarea>
+            placeholder="Add a description" required>{{feature.feature_content}}</textarea>
         <div class="text-danger">
             {{feature.featureContentError}}</div>
     </div>
     <div class="form-group">
-        <label>Choose a location</label>
+        <label>Choose a location</label><span class="required">*</span>
         <p style="font-size: 0.7rem; margin-bottom: 0rem;">Click and drag to select a region.</p>
         <p style="font-size: 0.7rem; margin-bottom: 0rem;">Hold the ALT key and drag to move the camera.</p>
         <div class="renderObject adminMode" id="renderObject1">
@@ -65,11 +70,11 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label id="rotateChangerLabel">Rotate</label>
-                <input id="rotateChanger" type="range" min="-180" max="180" value="0" class="slider">
+                <input id="rotateChanger" type="range" min="-180" max="180" value="0" class="slider" required>
             </div>
             <div class="form-group col-md-6">
                 <label id="heightChangerLabel">Change height</label>
-                <input id="heightChanger" type="range" min="-100" max="100" value="0" class="slider">
+                <input id="heightChanger" type="range" min="-100" max="100" value="0" class="slider" required>
             </div>
         </div>
     </div>
@@ -83,7 +88,7 @@
 
         <div class="form-group col-md-6">
             <label>Image Link</label>
-            <input type="text" class="form-control" name="link" placeholder="Supply an image link" value="{{feature.link}}">
+            <input type="text" class="form-control" name="link" placeholder="Add an image link" value="{{feature.link}}">
         </div>
     </div>
     <div class="form-group float-right">
