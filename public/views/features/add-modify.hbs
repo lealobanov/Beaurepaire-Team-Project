@@ -1,4 +1,9 @@
 <style>
+
+    .black {
+        color: black !important;
+    }
+
     .slider {
         -webkit-appearance: none;
         width: 75%;
@@ -9,8 +14,6 @@
         opacity: 0.7;
         -webkit-transition: .2s;
         transition: opacity .2s;
-        margin: 5px;
-        margin-left: 2rem;
         transform: translate(0%, 50%);
     }
 
@@ -39,13 +42,25 @@
     .required {
         color: red;
     }
-    
+
+    .renderObject {
+        width: 80%;
+        height: 100%;
+        display: block;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .instruction {
+        margin: 0.2rem;
+    }
+
 </style>
 
 
 <h3 style="font-family: Merriweather Sans !important;">{{viewTitle}}</h3>
 
-<form action="/features" method="POST" autocomplete="off">
+<form class="container" action="/features" method="POST" autocomplete="off">
 
     <input type="hidden" name="_id" value="{{feature._id}}">
     <div class="form-group">
@@ -63,27 +78,29 @@
     </div>
     <div class="form-group">
         <label>Choose a location</label><span class="required">*</span>
-        <p style="font-size: 0.7rem; margin-bottom: 0rem;">Click and drag to select a region.</p>
-        <p style="font-size: 0.7rem; margin-bottom: 0rem;">Hold the ALT key and drag to move the camera.</p>
-        <div class="renderObject adminMode" id="renderObject1">
-        </div>
+        <p class="text-muted instruction">Click and drag to select a region.</p>
+        <p class="text-muted instruction">Hold the ALT key and drag to move the camera.</p>
+
         <div class="form-row">
+            <div class="renderObject adminMode" id="renderObject1"></div>
             <div class="form-group col-md-6">
-                <label id="rotateChangerLabel">Rotate</label>
-                <input id="rotateChanger" type="range" min="-180" max="180" value="0" class="slider" required>
+                <label class="black" id="rotateChangerLabel">Rotate</label>
+                </br>
+                <input id="rotateChanger" type="range" min="-180" max="180" value="0" class="slider">
             </div>
             <div class="form-group col-md-6">
-                <label id="heightChangerLabel">Change height</label>
-                <input id="heightChanger" type="range" min="-100" max="100" value="0" class="slider" required>
+                <label class="black" id="heightChangerLabel">Change height</label>
+                </br>
+                <input id="heightChanger" type="range" min="-100" max="100" value="0" class="slider">
             </div>
         </div>
     </div>
 
     <div class="form-row">
         <input type="hidden" class="form-control" name="coordinates_1" id="coord_entry_1"
-            placeholder="Supply a 3-tuple in the format (x,y,z)" value="{{feature.coordinates_1}}">
+            placeholder="Supply a 3-tuple in the format (x,y,z)" value="{{feature.coordinates_1}}" required>
         <input type="hidden" class="form-control" name="coordinates_2" id="coord_entry_2"
-            placeholder="Supply a 3-tuple in the format (x,y,z)" value="{{feature.coordinates_2}}">
+            placeholder="Supply a 3-tuple in the format (x,y,z)" value="{{feature.coordinates_2}}" required>
         <input type="hidden" class="form-control" name="rotation" placeholder="Supply a rotation value" id="rotation_entry" value="{{feature.rotation}}">
 
         <div class="form-group col-md-6">
