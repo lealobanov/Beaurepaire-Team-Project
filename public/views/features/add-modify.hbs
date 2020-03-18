@@ -2,7 +2,7 @@
     .slider {
         -webkit-appearance: none;
         width: 75%;
-        height: 5px;
+        height: 0.2rem;
         border-radius: 5px;
         background: #b9b9b9;
         outline: none;
@@ -17,18 +17,18 @@
     .slider::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
-        width: 20px;
-        height: 20px;
+        width: 1rem;
+        height: 1rem;
         border-radius: 50%;
-        background: rgb(0, 129, 189);
+        background: #10c400;
         cursor: pointer;
     }
 
     .slider::-moz-range-thumb {
-        width: 20px;
-        height: 20px;
+        width: 1rem;
+        height: 1rem;
         border-radius: 50%;
-        background: rgb(0, 129, 189);
+        background: #10c400;
         cursor: pointer;
     }
 
@@ -75,21 +75,12 @@
     </div>
 
     <div class="form-row">
-        <div class="form-group col-md-6">
-            <label>Coordinate 1</label>
-            <input type="text" class="form-control" name="coordinates_1" id="coord_entry_1"
-                placeholder="Supply a 3-tuple in the format (x,y,z)" value="{{feature.coordinates_1}}">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Coordinate 2</label>
-            <input type="text" class="form-control" name="coordinates_2" id="coord_entry_2"
-                placeholder="Supply a 3-tuple in the format (x,y,z)" value="{{feature.coordinates_2}}">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Rotation</label>
-            <input type="text" class="form-control" name="rotation" placeholder="Supply a rotation value"
-                id="rotation_entry" value="{{feature.rotation}}">
-        </div>
+        <input type="hidden" class="form-control" name="coordinates_1" id="coord_entry_1"
+            placeholder="Supply a 3-tuple in the format (x,y,z)" value="{{feature.coordinates_1}}">
+        <input type="hidden" class="form-control" name="coordinates_2" id="coord_entry_2"
+            placeholder="Supply a 3-tuple in the format (x,y,z)" value="{{feature.coordinates_2}}">
+        <input type="hidden" class="form-control" name="rotation" placeholder="Supply a rotation value" id="rotation_entry" value="{{feature.rotation}}">
+
         <div class="form-group col-md-6">
             <label>Image Link</label>
             <input type="text" class="form-control" name="link" placeholder="Supply an image link" value="{{feature.link}}">
