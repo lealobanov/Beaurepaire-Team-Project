@@ -79,10 +79,10 @@
           <hr class="divider my-4">
         </div>
         <div class="col-8 align-self-baseline">
-          <p id="info-text" class="text-white-75 font-weight-light mb-5">Please allow location access in order to use the interative tour</p>
-          <a id="direction-btn" class="hidden btn btn-primary btn-xl js-scroll-trigger m-3" href="https://goo.gl/maps/SXHx3gjhUKUYXUJK6">get directions</a>
-          <a id="tour-btn" class="hidden btn btn-primary btn-xl js-scroll-trigger m-3" href="./map.html">interactive tour</a>
-          <a id="explore-btn" class="hidden btn btn-primary btn-xl js-scroll-trigger m-3" href="./map.html">explore</a>
+          <p id="info-text" class="text-white-75 font-weight-light mb-5">Please allow location access in order to use the interactive tour</p>
+          <a id="direction-btn" class="hidden btn btn-primary btn-xl js-scroll-trigger m-3" href="https://goo.gl/maps/SXHx3gjhUKUYXUJK6">Get Directions</a>
+          <a id="tour-btn" class="hidden btn btn-primary btn-xl js-scroll-trigger m-3" href="./map.html">Interactive Tour</a>
+          <a id="explore-btn" class="hidden btn btn-primary btn-xl js-scroll-trigger m-3" href="./map.html">Explore</a>
         </div>
       </div>
     </div>
@@ -90,7 +90,7 @@
     <!-- Mobile footer -->
     <footer class="mobile py-5">
       <div class="container">
-        <div class="small text-center text-white-75">Copyright &copy; 2019 - <a href="https://e-voice.org.uk/dreamcommunity/about/">Dream Heritage CIC</a></div>
+        <div class="small text-center text-white-75">Copyright &copy; 2020 - <a href="https://e-voice.org.uk/dreamcommunity/about/">Dream Heritage CIC</a></div>
       </div>
     </footer>
   </header>
@@ -135,14 +135,16 @@
 
   <!-- Directions Section -->
   <section class="desktop page-section bg-primary" id="directions">
+    <div class="layer">
     <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-8 text-center">
-          <h2 class="text-white mt-0">Visit Beaurepaire Manor House</h2>
-          <hr class="divider light my-4">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2300.461856710832!2d-1.6257264840983823!3d54.78942607334175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487e7e11dd607587%3A0xa7a5da71f8a8add4!2sBeaurepaire%20Priory%20(Ruins)!5e0!3m2!1sen!2suk!4v1574688717157!5m2!1sen!2suk" width="600rem" height="400rem" frameborder="0" style="border:0;" allowfullscreen=""> </iframe>
-          <div style="padding-top: 2rem">
-            <a class="btn btn-light btn-xl js-scroll-trigger" href="https://goo.gl/maps/SXHx3gjhUKUYXUJK6">Get Directions</a>
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h2 class="text-white mt-0">Visit Beaurepaire Manor House</h2>
+            <hr class="divider light my-4">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2300.461856710832!2d-1.6257264840983823!3d54.78942607334175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487e7e11dd607587%3A0xa7a5da71f8a8add4!2sBeaurepaire%20Priory%20(Ruins)!5e0!3m2!1sen!2suk!4v1574688717157!5m2!1sen!2suk" width="600rem" height="400rem" frameborder="0" style="border:0;" allowfullscreen=""> </iframe>
+            <div style="padding-top: 2rem">
+              <a class="btn btn-light btn-xl js-scroll-trigger" href="https://goo.gl/maps/SXHx3gjhUKUYXUJK6">Get Directions</a>
+            </div>
           </div>
         </div>
       </div>
@@ -180,16 +182,17 @@
       <span class="close">&times;
       </span>
       <img class="galleryModal-content" id="modalImg01">
+      <div id="caption"> HILLO </div>
     </div>
     <div class="picturesrow">
       <div class="picturescolumn">
-        <img class="pic" id="img01" onclick="createModal()" src="img/pictureboard/img1.jpg" style="width:100%">
+        <img class="pic" id="img01" onclick="createModal()" src="img/pictureboard/img1.jpg" alt="Image 1 - A view of Beaurepaire from the northern wing of the manor" style="width:100%">
       </div>
       <div class="picturescolumn">
-        <img class="pic" id="img02" onclick="createModal()" src="img/pictureboard/img2.jpg" style="width:100%">
+        <img class="pic" id="img02" onclick="createModal()" src="img/pictureboard/img2.jpg" alt="Image 2 - A couple of entrances lead into the manor's great hall" style="width:100%">
       </div>
       <div class="picturescolumn">
-        <img class="pic" id="img03" onclick="createModal()" src="img/pictureboard/img3.jpg" style="width:100%">
+        <img class="pic" id="img03" onclick="createModal()" src="img/pictureboard/img3.jpg" alt="Image 3 - A path leads to a pit several feet deep" style="width:100%">
       </div>
     </div>
   </section>
@@ -197,7 +200,8 @@
   <!-- Desktop footer -->
   <footer class="desktop bg-light py-5">
     <div class="container">
-      <div class="small text-center text-muted">Copyright &copy; 2019 - <a href="https://e-voice.org.uk/dreamcommunity/about/">Dream Heritage CIC</a></div>
+      <div class="small text-center text-muted">Copyright &copy; 2020 - <a href="https://e-voice.org.uk/dreamcommunity/about/">Dream Heritage CIC</a></div>
+      <div class="small text-center text-muted"><a href="/backendlogin.html">Administrator Portal</a></div>
     </div>
   </footer>
 
@@ -213,7 +217,7 @@
   <script src="js/creative.min.js"></script>
 
   <!-- onload and main scripts -->
-  <script src="js/index.js"></script>
+  <script src="js/index.min.js"></script>
 
 </body>
 

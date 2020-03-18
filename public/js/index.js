@@ -35,17 +35,17 @@ function isMobile() {
   return false;
 }
 
-// 54.789525, -1.623473
-
 //Modal creation for images gallery
 function createModal(){
   var modal = document.getElementById('theModal');
   var imgName = event.target.id
   var img = document.getElementById(imgName);
   var modalImg = document.getElementById('modalImg01');
+  var currentCaption = document.getElementById("caption");
   img.onclick = function(){
     modal.style.display = "block";
     modalImg.src = this.src;
+    currentCaption.innerHTML = "<i> " + img.alt + " <i>";
   }
   var span = document.getElementsByClassName("close")[0];
   span.onclick = function(){
