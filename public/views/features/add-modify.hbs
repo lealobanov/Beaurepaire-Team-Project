@@ -44,7 +44,7 @@
     }
 
     .renderObject {
-        width: 80%;
+        width: 100%;
         height: 100%;
         display: block;
         margin-top: 1rem;
@@ -77,6 +77,10 @@
             {{feature.featureContentError}}</div>
     </div>
     <div class="form-group">
+            <label>Image Link</label>
+            <input type="text" class="form-control" name="link" placeholder="Add an image link" value="{{feature.link}}">
+    </div>
+    <div class="form-group">
         <label>Choose a location</label><span class="required">*</span>
         <p class="text-muted instruction">Click and drag to select a region.</p>
         <p class="text-muted instruction">Hold the ALT key and drag to move the camera.</p>
@@ -102,11 +106,6 @@
         <input type="hidden" class="form-control" name="coordinates_2" id="coord_entry_2"
             placeholder="Supply a 3-tuple in the format (x,y,z)" value="{{feature.coordinates_2}}" required>
         <input type="hidden" class="form-control" name="rotation" placeholder="Supply a rotation value" id="rotation_entry" value="{{feature.rotation}}">
-
-        <div class="form-group col-md-6">
-            <label>Image Link</label>
-            <input type="text" class="form-control" name="link" placeholder="Add an image link" value="{{feature.link}}">
-        </div>
     </div>
     <div class="form-group float-right">
         <button type="submit" class="btn btn-info" style="background-color: #10C400 !important; border-color: #10C400 !important;">Save</button>
