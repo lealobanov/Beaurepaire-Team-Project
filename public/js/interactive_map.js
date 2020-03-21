@@ -285,11 +285,11 @@ function clear_zones() {
 
 var loader = new THREE.GLTFLoader();
 
-loader.load('../img/Beaurapaire3D.glb', function (gltf) {
+loader.load('../img/2020ScanCompositeUVmap.glb', function (gltf) { //../img/Beaurapaire3D.glb
 
     scene.add(gltf.scene);
     gltf.scene.scale.set(0.008, 0.008, 0.008);
-    gltf.scene.position.set(0, -0.7, 0.5);
+    gltf.scene.position.set(0, -0.4, 0.5);
     gltf.scene.rotation.set(0, Math.PI, 0);
 
     //console.log(scene);
@@ -352,9 +352,9 @@ scene.add(light);
 
 
 
-scene.fog = new THREE.FogExp2(0xfefefe);//, 4, 40 );
+// scene.fog = new THREE.FogExp2(0xfefefe);//, 4, 40 );
 
-scene.fog.density = 0.03;
+// scene.fog.density = 0.03;
 
 
 
