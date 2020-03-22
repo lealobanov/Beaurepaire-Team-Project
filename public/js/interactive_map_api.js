@@ -71,12 +71,14 @@ async function Display(id_zone,data) {
     } catch(error){
       alert("problem: "+error);
     }
+    if(data.link.length > 0){
     try{
         document.getElementById("insertLink").innerHTML =
         `<img src="${data.link}" alt="Image of feature" class="image">`;
       } catch(error){
         //Feature did not contain an image so no image shall be displayed
       }
+    }
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
