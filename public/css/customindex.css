@@ -1,29 +1,29 @@
+/* Row of image gallery modals */
 .picturesrow {
   display: flex;
 }
 
+/* Setting each gallery image modal to take equal screen width */
 .picturescolumn {
   flex: 33.33%;
 }
 
+/* Darkening image modals before hovered over */
 .pic {
   filter: brightness(40%);
   transition: 0.5s;
 }
-
 .pic:hover {
   filter: brightness(100%);
 }
 
+/* Setting masthead size to fill container */
 .header.masthead {
   height: 100%;
   width: 100%;
 }
 
-.hidden {
-  display: none;
-}
-
+/* Creating a sticky footer */
 .adminFooter {
   bottom: 0;
   position: -webkit-sticky;
@@ -32,6 +32,7 @@
   background-color: #E8E8E8;
 }
 
+/* Altering appearance of site based on desktop or mobile */
 @media screen and (min-width:600px),
 screen and (min-height:600px) {
   .mobile {
@@ -42,7 +43,6 @@ screen and (min-height:600px) {
     display: block !important;
   }
 }
-
 @media screen and (max-height:600px) {
   .mobile {
     display: block !important;
@@ -52,7 +52,6 @@ screen and (min-height:600px) {
     display: none !important;
   }
 }
-
 @media screen and (max-width:600px) {
   .mobile {
     display: block !important;
@@ -63,10 +62,7 @@ screen and (min-height:600px) {
   }
 }
 
-.galleryImg {
-  transition: 0.3s;
-}
-
+/* Setting the display for a gallery modal once selected */
 .galleryModal {
   display: none;
   position: fixed;
@@ -81,6 +77,7 @@ screen and (min-height:600px) {
   background-color: rgba(0, 0, 0, 0.9);
 }
 
+/* Setting the background for the directions section */
 #directions {
   background-image: url("../img/pictureboard/img1.jpg");
   background-position: center;
@@ -89,6 +86,7 @@ screen and (min-height:600px) {
   position: relative;
 }
 
+/* Overlay for the directions section to make background predominantly green */
 .layer {
   background-color: hsla(115, 100%, 38%, 0.9);
   position: relative;
@@ -96,20 +94,19 @@ screen and (min-height:600px) {
   padding: 3%;
 }
 
+/* Caption text for gallery modal once clicked */
 .galleryModal-content {
   margin: auto;
   display: block;
   width: 80%;
   max-width: 700px;
-}
-
-.galleryModal-content {
   -webkit-animation-name: zoom;
   -webkit-animation-duration: 0.6s;
   animation-name: zoom;
   animation-duration: 0.6s;
 }
 
+/* Setting animations for modals */
 @-webkit-keyframes zoom {
   from {
     -webkit-transform: scale(0)
@@ -119,7 +116,6 @@ screen and (min-height:600px) {
     -webkit-transform: scale(1)
   }
 }
-
 @keyframes zoom {
   from {
     transform: scale(0)
@@ -130,6 +126,7 @@ screen and (min-height:600px) {
   }
 }
 
+/* Close button for gallery modals once clicked */
 .close {
   position: absolute;
   top: 20%px;
@@ -153,38 +150,7 @@ screen and (min-height:600px) {
   }
 }
 
-.slider {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 5px;
-  border-radius: 5px;
-  background: #b9b9b9;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
-  margin: 5px;
-  transform: translate(0%, 50%);
-}
-
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: rgb(0, 129, 189);
-  cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: rgb(0, 129, 189);
-  cursor: pointer;
-}
-
+/* Caption for gallery modals once clicked */
 #caption {
   margin: auto;
   display: block;

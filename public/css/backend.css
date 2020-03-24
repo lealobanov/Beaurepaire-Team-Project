@@ -141,6 +141,7 @@ input:focus {
   background-color: rgba(255, 255, 255, 0) !important;
 }
 
+/* Formatting an error message to appear for invalid login attempts */
 #errMsg {
   text-align: center;
   color: #FF0000;

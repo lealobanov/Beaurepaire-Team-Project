@@ -1,5 +1,7 @@
+//Attempt to retrieve user location
 function getLocation() {
   if (isMobile()) {
+    //Display aprropriate error message if location cannot be retrieved
     try {
       navigator.geolocation.getCurrentPosition(displayButtons);
     } catch (err) {
@@ -29,6 +31,7 @@ function displayButtons(position) {
 function isMobile() {
   var width = Math.max(document.documentElement.clientWidth, window.innerWidth);
 
+  //Detecting mobile devices by some constant value (600 chosen)
   if (width < 600) {
     return true;
   }
@@ -37,16 +40,20 @@ function isMobile() {
 
 //Modal creation for images gallery
 function createModal(){
+  //Retrieving appropriate elements
   var modal = document.getElementById('theModal');
   var imgName = event.target.id
   var img = document.getElementById(imgName);
   var modalImg = document.getElementById('modalImg01');
   var currentCaption = document.getElementById("caption");
+  //Changing image visibility
   img.onclick = function(){
     modal.style.display = "block";
     modalImg.src = this.src;
+    //Displaying the image caption
     currentCaption.innerHTML = "<i> " + img.alt + " <i>";
   }
+  //Removing the modal when closed
   var span = document.getElementsByClassName("close")[0];
   span.onclick = function(){
     modal.style.display = "none";
