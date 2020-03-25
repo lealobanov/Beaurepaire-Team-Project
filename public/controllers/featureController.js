@@ -14,7 +14,6 @@ router.get('/retrieverecords/', function(req,res) {
     Feature.find((err, docs) => {
         if (!err) {
             res.send(docs);
-            //console.log(docs);
         }
         else {
             console.log('Error in retrieving records :' + err);
@@ -27,7 +26,6 @@ router.get('/retrieverecords/:id', function(req,res) {
     Feature.findById(req.params.id, (err, doc) => {
         if (!err) {
             res.send(doc);
-            //console.log(doc);
         }
         else {
             console.log('Error in retrieving record.');
@@ -40,7 +38,6 @@ router.post('/', (req, res) => {
     if (req.body._id == '')
         insertRecord(req, res);
         else
-        console.log("calling update")
         updateRecord(req, res);
 });
 
@@ -94,7 +91,6 @@ router.get('/list', (req, res) => {
             res.render("features/list", {
                 list: docs
             });
-            console.log(docs);
         }
         else {
             console.log('Error in retrieving features list :' + err);
@@ -108,7 +104,6 @@ router.get('/records', (req, res) => {
             res.render("/records", {
                 list: docs
             });
-            console.log(docs);
             
         }
         else {
