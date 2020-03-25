@@ -1,3 +1,4 @@
+<!--Form styles-->
 <style>
 
     .black {
@@ -60,6 +61,7 @@
 
 <h3 style="font-family: Merriweather Sans !important;">{{viewTitle}}</h3>
 
+<!--Form to add/update a feature; contents dynamically populated to/from MongoDB-->
 <form class="container" action="/features" method="POST" autocomplete="off">
 
     <input type="hidden" name="_id" value="{{feature._id}}">
@@ -113,6 +115,7 @@
     </div>
 </form>
 
+<!--Scripts to retrieve visualization of 3D model-->
 <script src="../js/WebGL.js"><{{!}}/script>
 <script src="../js/three.js"><{{!}}/script>
 <script src="../js/OrbitControls.js"><{{!}}/script>
