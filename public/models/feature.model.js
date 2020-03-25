@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+
+//Specify the attributes collected for each feature in the database
 var featureSchema = new mongoose.Schema({
     feature_title: {
         type: String,
