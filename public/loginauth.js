@@ -51,7 +51,6 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
 
 // Logout current user
-
 btnLogoutHBS.addEventListener('click', e => {
   firebase.auth().signOut();
   window.location = '/backendlogin.html';
