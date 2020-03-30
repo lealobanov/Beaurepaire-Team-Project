@@ -16,8 +16,8 @@ function displayButtons(position) {
   document.getElementById("info-text").style.display = "none";
 
   // Display buttons
-  if (!(54.790737 < position.coords.latitude < 54.788654 &&
-      -1.621184 < position.coords.longitude < -1.6256)) {
+  if (54.790737 < position.coords.latitude < 54.788654 &&
+      -1.621184 < position.coords.longitude < -1.6256) {
     document.getElementById("header").innerHTML = "Welcome to Beaurepaire";
     document.getElementById("explore-btn").style.display = "block";
     document.getElementById("direction-btn").style.display = "none";
