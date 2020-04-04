@@ -24,7 +24,7 @@ function displayButtons(position) {
   } else {
     document.getElementById("header").innerHTML = "It appears you're not at Beaurepaire";
     document.getElementById("direction-btn").style.display = "block";
-    document.getElementById("tour-btn").style.display = "block";
+    document.getElementById("explore-btn").style.display = "block";
   }
 }
 
