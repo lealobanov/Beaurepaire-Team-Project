@@ -14,17 +14,16 @@ function getLocation() {
 function displayButtons(position) {
   // Hide request for location access
   document.getElementById("info-text").style.display = "none";
+  document.getElementById("explore-btn").style.display = "block";
 
   // Display buttons
   if (54.790737 < position.coords.latitude < 54.788654 &&
       -1.621184 < position.coords.longitude < -1.6256) {
     document.getElementById("header").innerHTML = "Welcome to Beaurepaire";
-    document.getElementById("explore-btn").style.display = "block";
     document.getElementById("direction-btn").style.display = "none";
   } else {
     document.getElementById("header").innerHTML = "It appears you're not at Beaurepaire";
     document.getElementById("direction-btn").style.display = "block";
-    document.getElementById("tour-btn").style.display = "block";
   }
 }
 
