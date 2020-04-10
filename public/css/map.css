@@ -135,6 +135,13 @@
   text-align: center;
 }
 
+#patientMsg {
+  align-self: center;
+  font-style: italic;
+  font-size: medium;
+  margin-right: 1rem;
+}
+
 /* Add Animation */
 @keyframes animatetop {
   from {
