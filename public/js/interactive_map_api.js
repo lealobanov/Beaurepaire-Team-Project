@@ -163,12 +163,14 @@ async function Get_Modal_Data() {
 async function OnMapLoad(){
 
     console.log("Loaded map...");
+    document.getElementById("patientMsg").style.visibility = "hidden";
 
 }
 
 function OnMapError(){
 
     console.log("Map Error!");
+    document.getElementById("patientMsg").innerHTML = "Error loading the interactive map...";
 }
 
 //Get_Modal_Data();
