@@ -292,13 +292,14 @@ loader.load('../img/2020ScanCompositeUVmap.glb', function (gltf) { //../img/Beau
     gltf.scene.position.set(0, -0.4, 0.5);
     gltf.scene.rotation.set(0, Math.PI, 0);
 
+    OnMapLoad();
     //console.log(scene);
 
 
 }, undefined, function (error) {
 
     console.error(error);
-
+    OnMapError();
 });
 
 SetupZones();

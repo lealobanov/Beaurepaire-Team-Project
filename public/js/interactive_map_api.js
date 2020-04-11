@@ -159,6 +159,18 @@ async function Get_Modal_Data() {
     //console.log(modal_data);
     return modal_data
 }
+
+async function OnMapLoad(){
+
+    console.log("Loaded map...");
+
+}
+
+function OnMapError(){
+
+    console.log("Map Error!");
+}
+
 //Get_Modal_Data();
 
 /**
