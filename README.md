@@ -1,4 +1,4 @@
-# Team-11-Project
+# Beaurepaire-Team-Project
 A repository for the 'Explore Beaurepaire' web-app and interactive map developed by Team 11 for DREAM Heritage as part of the Software Engineering module at Durham University.
 
 Currently hosted and in use at http://explore-beaurepaire.herokuapp.com/
